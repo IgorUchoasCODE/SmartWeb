@@ -1,57 +1,37 @@
 
-* { margin: 0; padding: 0; outline: none !important; }
-body { width: 1100px; font-family: "Comic Sans MS", cursive; font-size: 13px; color: #999; background: #fff; }
+/* ==========================================================================
+ PROJETO: Desafio Resgate da SmartWeb
+ DISCIPLINA: Desenvolvimento Web I - 2º Período FACULDADE: Senac AM - FATESE | Prof. João Marcos Aires Duarte
+AUTORIA: Equipe [INSERIR CÓDIGO DA EQUIPE AQUI, ex: EQ01]
+ARQUIVO: css/estilos.css (CSS3 Mobile-First, Flexbox, Grid e Acessível)
+ ========================================================================== */9 /*
+ BLOCO: Variáveis de Customização (Custom Properties)
+ PARA QUE SERVE: Centralizar o tema visual, paleta de cores e espaçamentos do site.
+ O QUE FAZ: Define tokens reutilizáveis em todo o CSS através de var(--eqX-...)
+RESPONSABILIDADE: Manutenção visual ágil, consistência e garantia de contraste mínimo 4.5:1 (Unidade 3 e 5).
+=== FICHA DA EQUIPE: Substitua o prefixo '--eqX-' pelo código da sua equipe (ex: '--eq01-') ===
+*/
 
-
-#topo { background: #0a62a8; height: 90px; }
-
-
-div#topo table tr td div.logo span b { font-size: 30px !important; color: #3b7fc0 !important; }
-
-
-.aba { float: left; width: 250px; padding: 15px; background: #eee; color: #ccc; cursor: pointer; }
-
-
-.aba:hover { background: #0a62a8; color: #3b7fc0; }
-
-
-.botao { background: #ffeb3b; color: #fff; padding: 8px; text-align: center; cursor: pointer; width: 200px; }
-
-
-.botao:hover { background: #ffd600 !important; }
-
-
-h1 { font-size: 40px; color: #ddd; }
-
-
-h1 { font-size: 22px !important; }
-
-
-.titulo { font-size: 18px !important; color: #aaa !important; }
-
-
-#produtos .card h4 { color: #aaa; font-size: 14px; }
-
-
-.card h4 { color: #000 !important; }
-
-
-.piscar { animation: pisca 0.4s infinite; }
-
-
-@keyframes pisca { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
-
-
-.verde { width: 10px; height: 10px; background: green; display: inline-block; }
-
-
-.vermelho { width: 10px; height: 10px; background: red; display: inline-block; }
-
-
-.resposta { display: none; color: #ccc; }
-
-
-input, textarea { border: 1px solid #f5f5f5; width: 300px; height: 30px; color: #ccc; }
-
-
-@media (max-width: 1200px) { #menu { display: none; } }
+:root {
+--cor-primaria: #0a5896; /* Azul escuro (contraste 7.2:1 com fundo branco - WCAG AAA) */
+--cor-primaria-hover: #073f6b; /* Azul mais escuro para estados interativos de foco/hover */
+--cor-destaque: #ffd600; /* Amarelo da marca para botões e detalhes */
+--cor-destaque-hover: #e6c200; /* Tom ligeiramente escurecido para clique/hover */
+--cor-destaque-texto: #1a1a1a; /* Texto escuro sobre amarelo para contraste 14:1 */
+--cor-texto: #1f2937; /* Cinza grafite muito escuro para corpo de texto (contraste 14.6:1) */
+--cor-texto-secundario: #4b5563; /* Cinza médio de apoio (contraste 7.5:1 com branco) */
+--cor-fundo: #ffffff; /* Fundo principal limpo */
+--cor-fundo-alt: #f3f4f6; /* Fundo alternado para cartões e faixas secundárias */
+--cor-borda: #d1d5db; /* Cor de linhas divisórias e bordas de campos */
+--cor-erro: #b91c1c; /* Vermelho escuro acessível para mensagens de erro (contraste 6.4:1) */
+--cor-sucesso: #15803d; /* Verde escuro acessível para confirmações (contraste 5.1:1) */
+--cor-foco: #d97706; /* Âmbar vibrante para o anel de foco do teclado */
+/* Escala de espaçamentos relativos em rem (Unidade 3.8) */
+--espaco-xs: 0.25rem; /* 4px */
+--espaco-sm: 0.5rem; /* 8px */
+--espaco-md: 1rem; /* 16px */
+--espaco-lg: 1.5rem; /* 24px */
+--espaco-xl: 2.5rem; /* 40px */
+--raio-borda: 0.375rem; /* 6px */
+--fonte-principal: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+ }
