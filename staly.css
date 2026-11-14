@@ -85,4 +85,79 @@ outline-offset: 2px;
 BLOCO: Link de Salto (Skip Link)
 PARA QUE SERVE: Oferecer rota expressa para o conteúdo central ignorando cabeçalhos repetitivos.
 O QUE FAZ: Fica fora da área visível até receber foco pelo teclado, quando surge no topo da tela.
-RESPONS
+RESPONSABILIDADE: Acessibilidade de navegação para leitores de tela e utilizadores de teclado (Unidade 5).
+
+*/ 
+
+.skip-link {
+position: absolute;
+top: -100px;
+left: 1rem;
+background-color: var(--eqX-cor-destaque);
+color: var(--eqX-cor-destaque-texto);
+padding: var(--eqX-espaco-sm) var(--eqX-espaco-md);
+font-weight: 700;
+border-radius: var(--eqX-raio-borda);
+text-decoration: none;
+z-index: 9999;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+top: 1rem;
+}
+
+/*
+BLOCO: Contêiner de Largura Controlada
+PARA QUE SERVE: Centralizar o conteúdo nas telas grandes e manter margens seguras no celular.
+O QUE FAZ: Define largura máxima de 72rem (1152px) com margin: 0 auto e preenchimento lateral.
+RESPONSABILIDADE: Prevenir linhas de texto excessivamente longas e preservar o alinhamento visual (Unidade 3).
+*/
+.container {
+width: 100%;
+max-width: 72rem;
+margin: 0 auto;
+padding: 0 var(--eqX-espaco-md);
+}
+
+/*
+BLOCO: Imagens Fluidas e Responsivas
+PARA QUE SERVE: Impedir que imagens ultrapassem os limites da tela do usuário.
+O QUE FAZ: Garante max-width: 100% e altura proporcional automática.
+RESPONSABILIDADE: Evitar quebras de layout e rolagem horizontal em dispositivos móveis (Unidade 3.7).
+*/
+.img-responsiva {
+max-width: 100%;
+height: auto;
+display: block;
+}
+
+/*
+BLOCO: Hierarquia Tipográfica
+PARA QUE SERVE: Padronizar o tamanho, peso e espaçamento dos títulos do sumário do site.
+O QUE FAZ: Ajusta tamanhos relativos com margens inferiores padronizadas em variáveis.
+RESPONSABILIDADE: Construir uma hierarquia visual correspondente à semântica de títulos (Unidade 2.6).
+*/
+h1 {
+font-size: 1.75rem;
+line-height: 1.25;
+margin-bottom: var(--eqX-espaco-md);
+color: var(--eqX-cor-texto);
+}
+
+h2 {
+font-size: 1.35rem;
+margin-bottom: var(--eqX-espaco-sm);
+color: var(--eqX-cor-texto);
+}
+
+h3 {
+font-size: 1.125rem;
+margin-bottom: var(--eqX-espaco-xs);
+color: var(--eqX-cor-texto);
+}
+
+.texto-secundario {
+color: var(--eqX-cor-texto-secundario);
+}
