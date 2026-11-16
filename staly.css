@@ -161,3 +161,190 @@ color: var(--eqX-cor-texto);
 .texto-secundario {
 color: var(--eqX-cor-texto-secundario);
 }
+
+/*
+BLOCO: Topo do Site (Header)
+PARA QUE SERVE: Conter o logotipo da empresa e o botão de acesso rápido ao pedido.
+O QUE FAZ: Aplica a cor primária de fundo e alinha marca e pedido via Flexbox.
+RESPONSABILIDADE: Apresentação da identidade visual corporativa (Unidade 3).
+*/
+.topo {
+background-color: var(--eqX-cor-primaria);
+color: #ffffff;
+padding: var(--eqX-espaco-md) 0;
+}
+
+.topo-conteudo {
+display: flex;
+flex-direction: column;
+align-items: stretch;
+gap: var(--eqX-espaco-sm);
+width: 100%;
+min-width: 0;
+box-sizing: border-box;
+}
+
+.marca {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+gap: var(--eqX-espaco-md);
+min-width: 0;
+}
+
+.logo-img {
+border-radius: var(--eqX-raio-borda);
+background-color: #ffffff;
+padding: 2px;
+flex-shrink: 0;
+}
+
+.logo-titulo {
+display: block;
+font-size: 1.5rem;
+font-weight: 800;
+letter-spacing: -0.02em;
+color: #ffffff;
+}
+
+.logo-subtitulo {
+display: block;
+font-size: 0.75rem;
+letter-spacing: 0.12em;
+color: var(--eqX-cor-destaque);
+font-weight: 700;
+}
+
+.btn-pedido-topo {
+width: 100%;
+background-color: var(--eqX-cor-destaque);
+color: var(--eqX-cor-destaque-texto);
+font-weight: 700;
+font-size: 0.95rem;
+padding: var(--eqX-espaco-sm) var(--eqX-espaco-md);
+} 
+
+border: none;
+border-radius: var(--eqX-raio-borda);
+cursor: pointer;
+transition: background-color 0.2s ease;
+text-align: center;
+box-sizing: border-box;
+}
+
+.btn-pedido-topo:hover {
+background-color: var(--eqX-cor-destaque-hover);
+}
+
+/*
+BLOCO: Menu de Abas (Navegação Principal)
+PARA QUE SERVE: Exibir as abas de navegação de forma responsiva no topo.
+O QUE FAZ: No celular organiza os botões em coluna ou linhas compactas; em telas maiores, em linha horizontal.
+RESPONSABILIDADE: Controle visual de qual seção está ativa (Unidade 3 e 5).
+*/
+.menu-principal {
+background-color: var(--eqX-cor-fundo-alt);
+border-bottom: 1px solid var(--eqX-cor-borda);
+}
+
+.abas-lista {
+list-style: none;
+display: flex;
+flex-direction: column;
+}
+
+.aba {
+width: 100%;
+padding: var(--eqX-espaco-md);
+background: transparent;
+border: none;
+border-bottom: 1px solid var(--eqX-cor-borda);
+color: var(--eqX-cor-texto-secundario);
+font-size: 1rem;
+font-weight: 600;
+cursor: pointer;
+text-align: left;
+transition: all 0.2s ease;
+}
+
+.aba:hover {
+background-color: #e5e7eb;
+color: var(--eqX-cor-primaria);
+}
+
+.aba.ativa {
+background-color: var(--eqX-cor-fundo);
+color: var(--eqX-cor-primaria);
+font-weight: 700;
+border-left: 4px solid var(--eqX-cor-primaria);
+}
+
+/*
+BLOCO: Área de Conteúdo Central (Main)
+PARA QUE SERVE: Ajustar espaçamento e expansão das seções do documento.
+O QUE FAZ: Ocupa flex-grow: 1 para empurrar o rodapé para a base e adiciona respiro vertical.
+RESPONSABILIDADE: Layout estável da área de leitura (Unidade 3).
+*/
+.conteudo-principal {
+flex-grow: 1;
+padding-top: var(--eqX-espaco-xl);
+padding-bottom: var(--eqX-espaco-xl);
+}
+
+[hidden],
+.secao-aba[hidden] {
+display: none !important;
+}
+
+.secao-aba.ativa {
+display: block;
+}
+
+/*
+
+BLOCO: Botões Reutilizáveis
+PARA QUE SERVE: Padronizar ações interativas (comprar, solicitar, limpar).
+O QUE FAZ: Cria estilos coerentes com padding acessível, raio de borda e cores com contraste testado.
+RESPONSABILIDADE: Fornecer feedback tátil e visual ao usuário (Unidade 3.1).
+*/
+.botao {
+display: inline-block;
+padding: var(--eqX-espaco-sm) var(--eqX-espaco-lg);
+font-size: 0.95rem;
+font-weight: 700;
+text-align: center;
+border-radius: var(--eqX-raio-borda);
+border: 1px solid transparent;
+cursor: pointer;
+transition: all 0.2s ease;
+min-height: 44px; /* Tamanho mínimo de toque recomendado pela WCAG para mobile */
+}
+
+.botao-primario {
+background-color: var(--eqX-cor-destaque);
+color: var(--eqX-cor-destaque-texto);
+}
+
+.botao-primario:hover {
+background-color: var(--eqX-cor-destaque-hover);
+}
+
+.botao-secundario {
+background-color: transparent;
+color: var(--eqX-cor-primaria);
+border-color: var(--eqX-cor-primaria);
+}
+
+.botao-secundario:hover {
+background-color: var(--eqX-cor-primaria);
+color: #ffffff;
+}
+
+.botao-neutro {
+background-color: #e5e7eb;
+color: var(--eqX-cor-texto);
+}
+
+.botao-neutro:hover {
+background-color: #d1d5db; 
+}
