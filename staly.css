@@ -161,3 +161,64 @@ color: var(--eqX-cor-texto);
 .texto-secundario {
 color: var(--eqX-cor-texto-secundario);
 }
+
+/*
+BLOCO: Topo do Site (Header)
+PARA QUE SERVE: Conter o logotipo da empresa e o botão de acesso rápido ao pedido.
+O QUE FAZ: Aplica a cor primária de fundo e alinha marca e pedido via Flexbox.
+RESPONSABILIDADE: Apresentação da identidade visual corporativa (Unidade 3).
+*/
+.topo {
+background-color: var(--eqX-cor-primaria);
+color: #ffffff;
+padding: var(--eqX-espaco-md) 0;
+}
+
+.topo-conteudo {
+display: flex;
+flex-direction: column;
+align-items: stretch;
+gap: var(--eqX-espaco-sm);
+width: 100%;
+min-width: 0;
+box-sizing: border-box;
+}
+
+.marca {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+gap: var(--eqX-espaco-md);
+min-width: 0;
+}
+
+.logo-img {
+border-radius: var(--eqX-raio-borda);
+background-color: #ffffff;
+padding: 2px;
+flex-shrink: 0;
+}
+
+.logo-titulo {
+display: block;
+font-size: 1.5rem;
+font-weight: 800;
+letter-spacing: -0.02em;
+color: #ffffff;
+}
+
+.logo-subtitulo {
+display: block;
+font-size: 0.75rem;
+letter-spacing: 0.12em;
+color: var(--eqX-cor-destaque);
+font-weight: 700;
+}
+
+.btn-pedido-topo {
+width: 100%;
+background-color: var(--eqX-cor-destaque);
+color: var(--eqX-cor-destaque-texto);
+font-weight: 700;
+font-size: 0.95rem;
+padding: var(--eqX-espaco-sm) var(--eqX-espaco-md);
