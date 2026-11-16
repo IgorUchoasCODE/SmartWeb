@@ -20,7 +20,7 @@ var total
 
 function mostraAba(aba) {
   document.getElementById("empresa").style.display = "none"
-  document.getElementById("produto").style.display = "none"
+  document.getElementById("produtos").style.display = "none"
   document.getElementById("contato").style.display = "none"
   document.getElementById("faq").style.display = "none"
   document.getElementById(aba).style.display = "block"
@@ -28,8 +28,8 @@ function mostraAba(aba) {
 
 function montaCatalogo() {
   var html = ""
-  for (var i = 0; i <= produtos.length; i++) {
-    if (linhaAtual = "todas" || produtos[i].linha == linhaAtual) {
+  for (var i = 0; i < produtos.length; i++) {
+    if (linhaAtual == "todas" || produtos[i].linha == linhaAtual) {
       html = html + "<div class='card' style='float:left;width:240px;height:330px;margin:5px;border:1px solid #eee'>"
       html = html + "<img src='produto" + i + ".png' width='120'>"
       html = html + "<font size='1' color='#ccc'>" + produtos[i].sku + "</font><br>"
@@ -40,7 +40,7 @@ function montaCatalogo() {
       html = html + "</div>"
     }
   }
-  document.getElementById("catalogo").innerHtml = html
+  document.getElementById("catalogo").innerHTML = html
 }
 
 function filtra(l) {
@@ -92,5 +92,5 @@ function copiar(id) {
   alert("copiado")
 }
 
-window.onload = montaCatalogo()
+window.onload = montaCatalogo;
 
