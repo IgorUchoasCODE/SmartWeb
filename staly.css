@@ -35,3 +35,316 @@ RESPONSABILIDADE: Manutenção visual ágil, consistência e garantia de contras
 --raio-borda: 0.375rem; /* 6px */
 --fonte-principal: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
  }
+ 
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+/*
+BLOCO: Estilos Base do Corpo (Body)
+PARA QUE SERVE: Configurar a tipografia, cores e ocupação total da viewport.
+O QUE FAZ: Aplica a fonte do sistema, altura mínima de 100vh e layout flex vertical para fixar o rodapé.
+RESPONSABILIDADE: Manter o rodapé no final da página e legibilidade agradável (Unidade 3).
+*/
+html {
+overflow-x: hidden;
+width: 100%;
+}
+
+body {
+font-family: var(--eqX-fonte-principal);
+font-size: 1rem;
+line-height: 1.6;
+color: var(--eqX-cor-texto);
+background-color: var(--eqX-cor-fundo);
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+overflow-x: hidden;
+width: 100%;
+max-width: 100%;
+position: relative;
+}
+
+/*
+BLOCO: Foco Visível para Teclado (:focus-visible)
+PARA QUE SERVE: Tornar imediatamente visível qual elemento possui o foco da navegação por teclado.
+O QUE FAZ: Desenha um anel sólido de 3px com recuo quando o usuário navega com a tecla Tab.
+RESPONSABILIDADE: Substituir o 'outline: none' proibido e atender à WCAG 2.4.7 (Foco Visível) / Unidade 5.
+*/
+:focus-visible {
+outline: 3px solid var(--eqX-cor-foco);
+outline-offset: 2px;
+}
+
+/*
+BLOCO: Link de Salto (Skip Link)
+PARA QUE SERVE: Oferecer rota expressa para o conteúdo central ignorando cabeçalhos repetitivos.
+O QUE FAZ: Fica fora da área visível até receber foco pelo teclado, quando surge no topo da tela.
+RESPONSABILIDADE: Acessibilidade de navegação para leitores de tela e utilizadores de teclado (Unidade 5).
+
+*/ 
+
+.skip-link {
+position: absolute;
+top: -100px;
+left: 1rem;
+background-color: var(--eqX-cor-destaque);
+color: var(--eqX-cor-destaque-texto);
+padding: var(--eqX-espaco-sm) var(--eqX-espaco-md);
+font-weight: 700;
+border-radius: var(--eqX-raio-borda);
+text-decoration: none;
+z-index: 9999;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+top: 1rem;
+}
+
+/*
+BLOCO: Contêiner de Largura Controlada
+PARA QUE SERVE: Centralizar o conteúdo nas telas grandes e manter margens seguras no celular.
+O QUE FAZ: Define largura máxima de 72rem (1152px) com margin: 0 auto e preenchimento lateral.
+RESPONSABILIDADE: Prevenir linhas de texto excessivamente longas e preservar o alinhamento visual (Unidade 3).
+*/
+.container {
+width: 100%;
+max-width: 72rem;
+margin: 0 auto;
+padding: 0 var(--eqX-espaco-md);
+}
+
+/*
+BLOCO: Imagens Fluidas e Responsivas
+PARA QUE SERVE: Impedir que imagens ultrapassem os limites da tela do usuário.
+O QUE FAZ: Garante max-width: 100% e altura proporcional automática.
+RESPONSABILIDADE: Evitar quebras de layout e rolagem horizontal em dispositivos móveis (Unidade 3.7).
+*/
+.img-responsiva {
+max-width: 100%;
+height: auto;
+display: block;
+}
+
+/*
+BLOCO: Hierarquia Tipográfica
+PARA QUE SERVE: Padronizar o tamanho, peso e espaçamento dos títulos do sumário do site.
+O QUE FAZ: Ajusta tamanhos relativos com margens inferiores padronizadas em variáveis.
+RESPONSABILIDADE: Construir uma hierarquia visual correspondente à semântica de títulos (Unidade 2.6).
+*/
+h1 {
+font-size: 1.75rem;
+line-height: 1.25;
+margin-bottom: var(--eqX-espaco-md);
+color: var(--eqX-cor-texto);
+}
+
+h2 {
+font-size: 1.35rem;
+margin-bottom: var(--eqX-espaco-sm);
+color: var(--eqX-cor-texto);
+}
+
+h3 {
+font-size: 1.125rem;
+margin-bottom: var(--eqX-espaco-xs);
+color: var(--eqX-cor-texto);
+}
+
+.texto-secundario {
+color: var(--eqX-cor-texto-secundario);
+}
+
+/*
+BLOCO: Topo do Site (Header)
+PARA QUE SERVE: Conter o logotipo da empresa e o botão de acesso rápido ao pedido.
+O QUE FAZ: Aplica a cor primária de fundo e alinha marca e pedido via Flexbox.
+RESPONSABILIDADE: Apresentação da identidade visual corporativa (Unidade 3).
+*/
+.topo {
+background-color: var(--eqX-cor-primaria);
+color: #ffffff;
+padding: var(--eqX-espaco-md) 0;
+}
+
+.topo-conteudo {
+display: flex;
+flex-direction: column;
+align-items: stretch;
+gap: var(--eqX-espaco-sm);
+width: 100%;
+min-width: 0;
+box-sizing: border-box;
+}
+
+.marca {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+gap: var(--eqX-espaco-md);
+min-width: 0;
+}
+
+.logo-img {
+border-radius: var(--eqX-raio-borda);
+background-color: #ffffff;
+padding: 2px;
+flex-shrink: 0;
+}
+
+.logo-titulo {
+display: block;
+font-size: 1.5rem;
+font-weight: 800;
+letter-spacing: -0.02em;
+color: #ffffff;
+}
+
+.logo-subtitulo {
+display: block;
+font-size: 0.75rem;
+letter-spacing: 0.12em;
+color: var(--eqX-cor-destaque);
+font-weight: 700;
+}
+
+.btn-pedido-topo {
+width: 100%;
+background-color: var(--eqX-cor-destaque);
+color: var(--eqX-cor-destaque-texto);
+font-weight: 700;
+font-size: 0.95rem;
+padding: var(--eqX-espaco-sm) var(--eqX-espaco-md);
+} 
+
+border: none;
+border-radius: var(--eqX-raio-borda);
+cursor: pointer;
+transition: background-color 0.2s ease;
+text-align: center;
+box-sizing: border-box;
+}
+
+.btn-pedido-topo:hover {
+background-color: var(--eqX-cor-destaque-hover);
+}
+
+/*
+BLOCO: Menu de Abas (Navegação Principal)
+PARA QUE SERVE: Exibir as abas de navegação de forma responsiva no topo.
+O QUE FAZ: No celular organiza os botões em coluna ou linhas compactas; em telas maiores, em linha horizontal.
+RESPONSABILIDADE: Controle visual de qual seção está ativa (Unidade 3 e 5).
+*/
+.menu-principal {
+background-color: var(--eqX-cor-fundo-alt);
+border-bottom: 1px solid var(--eqX-cor-borda);
+}
+
+.abas-lista {
+list-style: none;
+display: flex;
+flex-direction: column;
+}
+
+.aba {
+width: 100%;
+padding: var(--eqX-espaco-md);
+background: transparent;
+border: none;
+border-bottom: 1px solid var(--eqX-cor-borda);
+color: var(--eqX-cor-texto-secundario);
+font-size: 1rem;
+font-weight: 600;
+cursor: pointer;
+text-align: left;
+transition: all 0.2s ease;
+}
+
+.aba:hover {
+background-color: #e5e7eb;
+color: var(--eqX-cor-primaria);
+}
+
+.aba.ativa {
+background-color: var(--eqX-cor-fundo);
+color: var(--eqX-cor-primaria);
+font-weight: 700;
+border-left: 4px solid var(--eqX-cor-primaria);
+}
+
+/*
+BLOCO: Área de Conteúdo Central (Main)
+PARA QUE SERVE: Ajustar espaçamento e expansão das seções do documento.
+O QUE FAZ: Ocupa flex-grow: 1 para empurrar o rodapé para a base e adiciona respiro vertical.
+RESPONSABILIDADE: Layout estável da área de leitura (Unidade 3).
+*/
+.conteudo-principal {
+flex-grow: 1;
+padding-top: var(--eqX-espaco-xl);
+padding-bottom: var(--eqX-espaco-xl);
+}
+
+[hidden],
+.secao-aba[hidden] {
+display: none !important;
+}
+
+.secao-aba.ativa {
+display: block;
+}
+
+/*
+
+BLOCO: Botões Reutilizáveis
+PARA QUE SERVE: Padronizar ações interativas (comprar, solicitar, limpar).
+O QUE FAZ: Cria estilos coerentes com padding acessível, raio de borda e cores com contraste testado.
+RESPONSABILIDADE: Fornecer feedback tátil e visual ao usuário (Unidade 3.1).
+*/
+.botao {
+display: inline-block;
+padding: var(--eqX-espaco-sm) var(--eqX-espaco-lg);
+font-size: 0.95rem;
+font-weight: 700;
+text-align: center;
+border-radius: var(--eqX-raio-borda);
+border: 1px solid transparent;
+cursor: pointer;
+transition: all 0.2s ease;
+min-height: 44px; /* Tamanho mínimo de toque recomendado pela WCAG para mobile */
+}
+
+.botao-primario {
+background-color: var(--eqX-cor-destaque);
+color: var(--eqX-cor-destaque-texto);
+}
+
+.botao-primario:hover {
+background-color: var(--eqX-cor-destaque-hover);
+}
+
+.botao-secundario {
+background-color: transparent;
+color: var(--eqX-cor-primaria);
+border-color: var(--eqX-cor-primaria);
+}
+
+.botao-secundario:hover {
+background-color: var(--eqX-cor-primaria);
+color: #ffffff;
+}
+
+.botao-neutro {
+background-color: #e5e7eb;
+color: var(--eqX-cor-texto);
+}
+
+.botao-neutro:hover {
+background-color: #d1d5db; 
+}
