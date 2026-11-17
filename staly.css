@@ -348,3 +348,174 @@ color: var(--eqX-cor-texto);
 .botao-neutro:hover {
 background-color: #d1d5db; 
 }
+
+/*
+BLOCO: Banner de Oferta e Promoção Especial
+PARA QUE SERVE: Exibir com elegância e clareza os produtos em oferta e condições comerciais.
+O QUE FAZ: Cria um bloco em gradiente corporativo azul, badge amarelo de destaque e lista de vantagens.
+RESPONSABILIDADE: Substituir o letreiro estático amador por uma seção de vendas moderna e acessível (Unidades 3 e 5).
+*/
+.banner-promocao {
+background: linear-gradient(135deg, var(--eqX-cor-primaria) 0%, #063c66 100%);
+color: #ffffff;
+border: 1px solid rgba(255, 214, 0, 0.4);
+border-radius: var(--eqX-raio-borda);
+padding: var(--eqX-espaco-lg);
+margin-bottom: var(--eqX-espaco-xl);
+box-shadow: 0 4px 12px rgba(10, 88, 150, 0.15);
+}
+
+.banner-promocao-conteudo {
+display: flex;
+flex-direction: column;
+gap: var(--eqX-espaco-md);
+}
+
+.banner-badge-wrapper {
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+gap: var(--eqX-espaco-sm);
+}
+
+.badge-promocao {
+background-color: var(--eqX-cor-destaque);
+color: var(--eqX-cor-destaque-texto);
+font-weight: 800;
+font-size: 0.85rem;
+padding: 4px 12px;
+border-radius: 999px;
+letter-spacing: 0.05em;
+display: inline-block;
+}
+
+.badge-subtitulo {
+font-size: 0.85rem;
+color: #e0f2fe;
+font-weight: 600;
+}
+
+.banner-titulo {
+font-size: 1.35rem;
+line-height: 1.3;
+color: #ffffff;
+margin-bottom: var(--eqX-espaco-xs);
+}
+
+.banner-descricao {
+font-size: 0.98rem;
+color: #f0fdf4;
+line-height: 1.5;
+margin-bottom: var(--eqX-espaco-sm);
+}
+
+.banner-descricao strong {
+color: #ffffff;
+}
+
+.banner-vantagens {
+list-style: none;
+display: flex;
+flex-wrap: wrap;
+gap: var(--eqX-espaco-md);
+font-size: 0.85rem;
+color: var(--eqX-cor-destaque);
+font-weight: 700;
+}
+
+.banner-cta {
+margin-top: var(--eqX-espaco-xs);
+}
+
+/* Animação suave que respeita prefers-reduced-motion (Unidade 5.2) */
+@keyframes pulsarSuave {
+0%, 100% { opacity: 1; transform: scale(1); }
+50% { opacity: 0.92; transform: scale(1.03); }
+}
+
+.piscar {
+animation: pulsarSuave 2.5s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+.piscar {
+animation: none;
+transform: none;
+}
+}
+
+.subtitulo-secao {
+font-size: 0.85rem;
+font-weight: 700;
+color: var(--eqX-cor-primaria);
+letter-spacing: 0.05em;
+margin-bottom: var(--eqX-espaco-xs);
+}
+
+.hero {
+margin-bottom: var(--eqX-espaco-xl);
+}
+
+.texto-destaque {
+font-size: 1.15rem;
+color: var(--eqX-cor-texto-secundario);
+margin-bottom: var(--eqX-espaco-lg);
+max-width: 50rem;
+}
+
+.hero-acoes {
+display: flex;
+flex-direction: column;
+gap: var(--eqX-espaco-sm);
+width: 100%;
+min-width: 0;
+box-sizing: border-box;
+}
+
+.hero-acoes .botao {
+width: 100%;
+}
+
+/*
+BLOCO: Diagrama do Switch e Status das Portas
+PARA QUE SERVE: Exibir a imagem do switch com legenda explicativa dos leds.
+O QUE FAZ: Estiliza o figure/figcaption e combina círculos de cor com texto legível.
+RESPONSABILIDADE: Respeitar o princípio Perceptível: nunca usar apenas cor para transmitir status (Unidade 5.1).
+*/
+.painel-switch {
+background-color: #111827;
+color: #ffffff;
+padding: var(--eqX-espaco-md);
+border-radius: var(--eqX-raio-borda);
+margin-bottom: var(--eqX-espaco-xl);
+}
+
+.status-portas {
+margin-top: var(--eqX-espaco-sm);
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+gap: var(--eqX-espaco-md);
+font-size: 0.85rem;
+}
+
+.porta-item {
+display: inline-flex;
+align-items: center;
+gap: var(--eqX-espaco-xs);
+}
+
+.indicador {
+width: 0.75rem;
+height: 0.75rem;
+border-radius: 50%;
+display: inline-block;
+}
+
+.indicador.verde {
+background-color: #22c55e;
+}
+
+.indicador.vermelho {
+background-color: #ef4444;
+}
