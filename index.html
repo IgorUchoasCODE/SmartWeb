@@ -1,675 +1,1772 @@
-<!-- ==========================================================================
-  PROJETO: Desafio Resgate da SmartWeb
-  DISCIPLINA: Desenvolvimento Web I - 2º Período
-  FACULDADE: Senac AM - FATESE | Prof. João Marcos Aires Duarte
-  AUTORIA: Equipe EQ01 (Desafio do Grupo: Ordenação de Preços)
-  ARQUIVO: index.html (HTML5 Semântico, Acessível e Modular)
-  ========================================================================== -->
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SmartWeb Informática e Redes — Soluções Corporativas</title>
-  <link rel="stylesheet" href="css/estilos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartWeb | Informática e Redes</title>
+
+    <meta name="description"
+        content="SmartWeb Informática e Redes. Soluções tecnológicas, equipamentos e infraestrutura de redes em Manaus.">
+
+    <style>
+
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primaria: #0756c9;
+            --secundaria: #003b91;
+            --destaque: #00c2ff;
+            --fundo: #f3f6fb;
+            --texto: #202b3c;
+            --branco: #ffffff;
+            --verde: #16a34a;
+            --vermelho: #dc2626;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--fundo);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* =========================
+           CABEÇALHO
+        ========================= */
+
+        .topo {
+            background: linear-gradient(
+                120deg,
+                #003b91,
+                #0877e8
+            );
+
+            color: white;
+            padding: 20px 0;
+        }
+
+        .topo-conteudo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .marca {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            background: white;
+            color: var(--primaria);
+            display: grid;
+            place-items: center;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo-titulo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo-subtitulo {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        .btn-pedido {
+            background: white;
+            color: var(--primaria);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .btn-pedido:hover {
+            background: #e5efff;
+        }
+
+        /* =========================
+           MENU
+        ========================= */
+
+        nav {
+            background: white;
+            box-shadow: 0 3px 12px #00000012;
+        }
+
+        .menu-abas {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .menu-abas button {
+            background: transparent;
+            border: none;
+            padding: 18px 24px;
+            font-weight: bold;
+            color: #475569;
+            border-bottom: 3px solid transparent;
+        }
+
+        .menu-abas button:hover,
+        .menu-abas button.ativo {
+            color: var(--primaria);
+            border-bottom-color: var(--primaria);
+        }
+
+        /* =========================
+           CONTEÚDO
+        ========================= */
+
+        main {
+            min-height: 650px;
+            padding: 35px 0;
+        }
+
+        .aba {
+            display: none;
+            animation: aparecer .3s ease;
+        }
+
+        .aba.ativa {
+            display: block;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--secundaria);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: var(--secundaria);
+        }
+
+        /* =========================
+           BANNER PROMOCIONAL
+        ========================= */
+
+        .banner {
+            background: linear-gradient(
+                120deg,
+                #001d4d,
+                #0756c9
+            );
+
+            color: white;
+            padding: 45px;
+            border-radius: 16px;
+            margin-bottom: 35px;
+        }
+
+        .banner h1 {
+            color: white;
+            font-size: 35px;
+            margin: 15px 0;
+        }
+
+        .banner p {
+            max-width: 700px;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ffb703;
+            color: #222;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .botao {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .botao-primario {
+            background: var(--destaque);
+            color: #003b91;
+        }
+
+        .botao-secundario {
+            background: white;
+            color: var(--primaria);
+        }
+
+        /* =========================
+           EMPRESA
+        ========================= */
+
+        .cartao-info {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px #00000008;
+        }
+
+        .grade-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .info-item span {
+            font-size: 35px;
+        }
+
+        .tabela-horarios {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tabela-horarios th,
+        .tabela-horarios td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .tabela-horarios th {
+            background: var(--primaria);
+            color: white;
+        }
+
+        /* =========================
+           CATÁLOGO
+        ========================= */
+
+        .controles {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .controles input,
+        .controles select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            margin-top: 5px;
+        }
+
+        .grade-produtos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .produto {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 3px 15px #00000010;
+            transition: .3s;
+        }
+
+        .produto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px #00000018;
+        }
+
+        .produto-imagem {
+            height: 150px;
+            background: #eaf2ff;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .produto h3 {
+            color: var(--secundaria);
+            margin-bottom: 8px;
+        }
+
+        .categoria {
+            display: inline-block;
+            background: #e0edff;
+            color: var(--primaria);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .preco {
+            font-size: 23px;
+            color: var(--verde);
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .btn-adicionar {
+            background: var(--primaria);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .btn-adicionar:hover {
+            background: var(--secundaria);
+        }
+
+        /* =========================
+           RESUMO DO PEDIDO
+        ========================= */
+
+        .resumo {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* =========================
+           CONTATO
+        ========================= */
+
+        .contato-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+
+        form,
+        .canais {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        .campo label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .campo input,
+        .campo textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+        }
+
+        .campo textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .erro {
+            color: var(--vermelho);
+            font-size: 13px;
+        }
+
+        .btn-enviar {
+            background: var(--primaria);
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 7px;
+        }
+
+        .canais ul {
+            list-style: none;
+        }
+
+        .canais li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .btn-copiar {
+            color: var(--primaria);
+            border: none;
+            background: transparent;
+            margin-left: 8px;
+        }
+
+        /* =========================
+           FAQ
+        ========================= */
+
+        .faq-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .faq-item summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--secundaria);
+        }
+
+        .faq-item p {
+            margin-top: 12px;
+        }
+
+        /* =========================
+           CARRINHO
+        ========================= */
+
+        .backdrop {
+            position: fixed;
+            inset: 0;
+            background: #0009;
+            z-index: 10;
+        }
+
+        .carrinho {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 380px;
+            max-width: 100%;
+            height: 100vh;
+            background: white;
+            z-index: 11;
+            padding: 25px;
+            overflow-y: auto;
+            box-shadow: -5px 0 20px #0002;
+        }
+
+        .carrinho-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .btn-fechar {
+            border: none;
+            background: transparent;
+            font-size: 25px;
+        }
+
+        .item-carrinho {
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .item-carrinho button {
+            background: #fee2e2;
+            color: #b91c1c;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            margin-top: 8px;
+        }
+
+        .total-carrinho {
+            font-size: 22px;
+            margin: 25px 0;
+        }
+
+        .btn-finalizar {
+            width: 100%;
+            background: var(--verde);
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .btn-limpar {
+            width: 100%;
+            background: #fee2e2;
+            color: #b91c1c;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+            background: #061b38;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 40px;
+        }
+
+        /* =========================
+           RESPONSIVIDADE
+        ========================= */
+
+        @media(max-width: 850px) {
+
+            .grade-produtos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .controles {
+                grid-template-columns: 1fr;
+            }
+
+            .grade-info {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width: 600px) {
+
+            .topo-conteudo {
+                flex-direction: column;
+            }
+
+            .menu-abas button {
+                padding: 12px;
+                font-size: 13px;
+            }
+
+            .banner {
+                padding: 25px;
+            }
+
+            .banner h1 {
+                font-size: 26px;
+            }
+
+            .grade-produtos {
+                grid-template-columns: 1fr;
+            }
+
+            .contato-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .resumo {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
 </head>
+
 <body>
-  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
-  <header class="topo">
-    <div class="container topo-conteudo">
-      <div class="marca">
-        <img
-          src="logo.png"
-          alt="Logotipo da SmartWeb Informática e Redes"
-          class="logo-img"
-          width="60"
-          height="60"
-        >
-        <div>
-          <span class="logo-titulo">SmartWeb</span>
-          <span class="logo-subtitulo">INFORMÁTICA E REDES</span>
+    <!-- CABEÇALHO -->
+
+    <header class="topo">
+
+        <div class="container topo-conteudo">
+
+            <div class="marca">
+
+                <div class="logo">SW</div>
+
+                <div>
+                    <div class="logo-titulo">SmartWeb</div>
+                    <span class="logo-subtitulo">
+                        INFORMÁTICA E REDES
+                    </span>
+                </div>
+
+            </div>
+
+            <button class="btn-pedido" id="abrir-carrinho">
+                🛒 Meu pedido (<span id="quantidade">0</span>)
+            </button>
+
         </div>
-      </div>
 
-      <button
-        type="button"
-        id="btn-meu-pedido"
-        class="btn-pedido-topo"
-        data-aba="produtos"
-      >
-        Meu pedido (<span id="qtd" aria-live="polite">0</span>)
-      </button>
+    </header>
+
+    <!-- MENU -->
+
+    <nav aria-label="Navegação principal">
+
+        <ul class="menu-abas">
+
+            <li>
+                <button class="ativo" data-aba="empresa">
+                    A empresa
+                </button>
+            </li>
+
+            <li>
+                <button data-aba="produtos">
+                    Produtos
+                </button>
+            </li>
+
+            <li>
+                <button data-aba="contato">
+                    Contato
+                </button>
+            </li>
+
+            <li>
+                <button data-aba="faq">
+                    Perguntas frequentes
+                </button>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <main class="container">
+
+        <!-- EMPRESA -->
+
+        <section class="aba ativa" id="empresa">
+
+            <div class="banner">
+
+                <span class="badge">
+                    PROMOÇÃO IMPERDÍVEL
+                </span>
+
+                <h1>
+                    Tecnologia para sua empresa crescer!
+                </h1>
+
+                <p>
+                    Soluções completas em informática,
+                    equipamentos de rede e infraestrutura
+                    tecnológica para pequenas e médias empresas.
+                </p>
+
+                <button class="botao botao-primario"
+                    data-ir="produtos">
+                    Ver produtos
+                </button>
+
+                <button class="botao botao-secundario"
+                    data-ir="contato">
+                    Solicitar orçamento
+                </button>
+
+            </div>
+
+            <h1>Sobre a SmartWeb</h1>
+
+            <div class="cartao-info">
+
+                <p>
+                    Somos especialistas em informática e redes,
+                    oferecendo soluções tecnológicas para
+                    empresas que buscam qualidade, segurança
+                    e eficiência.
+                </p>
+
+            </div>
+
+            <div class="grade-info">
+
+                <div class="info-item">
+                    <span>💻</span>
+                    <h2>Informática</h2>
+                    <p>Equipamentos e acessórios.</p>
+                </div>
+
+                <div class="info-item">
+                    <span>🌐</span>
+                    <h2>Redes</h2>
+                    <p>Infraestrutura e conectividade.</p>
+                </div>
+
+                <div class="info-item">
+                    <span>🛠️</span>
+                    <h2>Suporte</h2>
+                    <p>Atendimento e assistência técnica.</p>
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="cartao-info">
+
+                <h2>Como trabalhamos</h2>
+
+                <p>
+                    Nosso objetivo é oferecer atendimento técnico,
+                    venda de equipamentos e suporte para que
+                    nossos clientes mantenham suas operações
+                    funcionando com eficiência.
+                </p>
+
+            </div>
+
+            <div class="cartao-info">
+
+                <h2>Horário de atendimento</h2>
+
+                <table class="tabela-horarios">
+
+                    <thead>
+                        <tr>
+                            <th>Dia</th>
+                            <th>Horário</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Segunda a sexta</td>
+                            <td>08:00 às 18:00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Sábado</td>
+                            <td>09:00 às 13:00</td>
+                        </tr>
+
+                        <tr>
+                            <td>Domingo</td>
+                            <td>Fechado</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- PRODUTOS -->
+
+        <section class="aba" id="produtos">
+
+            <h1>Catálogo de produtos</h1>
+
+            <div class="controles">
+
+                <div>
+                    <label for="busca">Buscar produto</label>
+                    <input type="search"
+                        id="busca"
+                        placeholder="Digite o nome do produto">
+                </div>
+
+                <div>
+                    <label for="categoria">Categoria</label>
+
+                    <select id="categoria">
+
+                        <option value="todos">Todas</option>
+                        <option value="Redes">Redes</option>
+                        <option value="Informática">Informática</option>
+                        <option value="Acessórios">Acessórios</option>
+
+                    </select>
+                </div>
+
+                <div>
+                    <label for="ordenar">Ordenar por</label>
+
+                    <select id="ordenar">
+
+                        <option value="relevancia">Relevância</option>
+                        <option value="menor">Menor preço</option>
+                        <option value="maior">Maior preço</option>
+
+                    </select>
+                </div>
+
+            </div>
+
+            <p id="resultado-busca" aria-live="polite"></p>
+
+            <div class="grade-produtos" id="lista-produtos"></div>
+
+            <div class="resumo">
+
+                <span>
+                    🛒 <span id="resumo-quantidade">0</span>
+                    itens no pedido
+                </span>
+
+                <strong>
+                    Total: <span id="resumo-total">R$ 0,00</span>
+                </strong>
+
+                <button class="botao botao-primario"
+                    id="ver-pedido">
+                    Ver pedido
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- CONTATO -->
+
+        <section class="aba" id="contato">
+
+            <h1>Entre em contato</h1>
+
+            <div class="contato-layout">
+
+                <form id="form-contato">
+
+                    <div class="campo">
+
+                        <label for="nome">Nome *</label>
+
+                        <input type="text"
+                            id="nome"
+                            required>
+
+                        <span class="erro" id="erro-nome"></span>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="email">E-mail *</label>
+
+                        <input type="email"
+                            id="email"
+                            required>
+
+                        <span class="erro" id="erro-email"></span>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="mensagem">Mensagem *</label>
+
+                        <textarea id="mensagem"
+                            required></textarea>
+
+                        <span class="erro"
+                            id="erro-mensagem"></span>
+
+                    </div>
+
+                    <button class="btn-enviar" type="submit">
+                        Enviar mensagem
+                    </button>
+
+                    <p id="resultado-form"
+                        aria-live="polite"></p>
+
+                </form>
+
+                <aside class="canais">
+
+                    <h2>Nossos canais</h2>
+
+                    <ul>
+
+                        <li>
+                            📱 <span id="telefone">
+                                (92) 99999-0000
+                            </span>
+
+                            <button class="btn-copiar"
+                                data-copiar="telefone">
+                                Copiar
+                            </button>
+                        </li>
+
+                        <li>
+                            ☎️ <span id="fixo">
+                                (92) 3333-0000
+                            </span>
+
+                            <button class="btn-copiar"
+                                data-copiar="fixo">
+                                Copiar
+                            </button>
+                        </li>
+
+                        <li>
+                            ✉️ <span id="email-contato">
+                                contato@smartwebinformatica.com.br
+                            </span>
+
+                            <button class="btn-copiar"
+                                data-copiar="email-contato">
+                                Copiar
+                            </button>
+                        </li>
+
+                    </ul>
+
+                    <p id="aviso-copia"
+                        aria-live="polite"></p>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+        <!-- FAQ -->
+
+        <section class="aba" id="faq">
+
+            <h1>Perguntas frequentes</h1>
+
+            <p>
+                Clique em uma pergunta para visualizar a resposta.
+            </p>
+
+            <br>
+
+            <details class="faq-item">
+
+                <summary>
+                    Vocês fazem instalação de redes?
+                </summary>
+
+                <p>
+                    Sim! Realizamos projetos e instalações
+                    de infraestrutura de redes.
+                </p>
+
+            </details>
+
+            <details class="faq-item">
+
+                <summary>
+                    Qual o prazo de entrega?
+                </summary>
+
+                <p>
+                    O prazo depende da disponibilidade
+                    do produto em estoque.
+                </p>
+
+            </details>
+
+            <details class="faq-item">
+
+                <summary>
+                    Vocês emitem orçamento formal?
+                </summary>
+
+                <p>
+                    Sim! Emitimos orçamentos formais
+                    com condições de pagamento.
+                </p>
+
+            </details>
+
+            <details class="faq-item">
+
+                <summary>
+                    Vocês atendem empresas?
+                </summary>
+
+                <p>
+                    Sim! Nosso atendimento é direcionado
+                    principalmente a pequenas e médias empresas.
+                </p>
+
+            </details>
+
+            <details class="faq-item">
+
+                <summary>
+                    Os produtos possuem garantia?
+                </summary>
+
+                <p>
+                    Sim! A garantia varia conforme
+                    o fabricante e o produto adquirido.
+                </p>
+
+            </details>
+
+            <details class="faq-item">
+
+                <summary>
+                    Posso solicitar atendimento técnico?
+                </summary>
+
+                <p>
+                    Sim! Entre em contato para consultar
+                    os serviços disponíveis.
+                </p>
+
+            </details>
+
+            <details class="faq-item">
+
+                <summary>
+                    Vocês trabalham com equipamentos de rede?
+                </summary>
+
+                <p>
+                    Sim! Trabalhamos com switches,
+                    roteadores, cabos e acessórios.
+                </p>
+
+            </details>
+
+            <details class="faq-item">
+
+                <summary>
+                    Como posso solicitar um pedido?
+                </summary>
+
+                <p>
+                    Acesse o catálogo, adicione os produtos
+                    desejados ao carrinho e solicite seu pedido.
+                </p>
+
+            </details>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <h2 style="color:white">SmartWeb Informática e Redes</h2>
+
+        <p>Manaus - Amazonas</p>
+
+        <p>
+            © <span id="ano"></span>
+            SmartWeb. Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+    <!-- CARRINHO -->
+
+    <div class="backdrop"
+        id="backdrop"
+        hidden>
     </div>
-  </header>
 
-  <nav id="menu" class="menu-principal" aria-label="Navegação principal">
-    <div class="container">
-      <ul class="abas-lista">
-        <li>
-          <button
-            type="button"
-            class="aba ativa"
-            data-aba="empresa"
-            aria-pressed="true"
-            aria-current="page"
-          >
-            A empresa
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="aba"
-            data-aba="produtos"
-            aria-pressed="false"
-          >
-            Produtos
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="aba"
-            data-aba="contato"
-            aria-pressed="false"
-          >
-            Contato
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="aba"
-            data-aba="faq"
-            aria-pressed="false"
-          >
-            Perguntas frequentes
-          </button>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <aside class="carrinho"
+        id="carrinho"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="titulo-carrinho"
+        hidden>
 
-  <main id="conteudo-principal" class="conteudo-principal container">
-    <!-- SEÇÃO 1: A EMPRESA -->
-    <section id="empresa" class="secao-aba ativa" aria-labelledby="titulo-empresa">
-      <aside class="banner-promocao" aria-label="Destaque promocional">
-        <div class="banner-promocao-conteudo">
-          <div class="banner-badge-wrapper">
-            <span class="badge-promocao piscar">*** PROMOÇÃO IMPERDÍVEL ***</span>
-            <span class="badge-subtitulo">Condições especiais para infraestrutura corporativa</span>
-          </div>
-          <p class="banner-descricao">
-            <strong>Linha empresarial (SMB) pronta para entrega:</strong> notebooks, switches gerenciáveis,
-            roteadores dual WAN e proteção contra quedas de energia com garantia de balcão.
-          </p>
-          <ul class="banner-vantagens">
-            <li>Parcelamento em até 10x</li>
-            <li>Faturamento para empresas</li>
-            <li>Entrega em até 2 dias úteis em estoque</li>
-          </ul>
-        </div>
-      </aside>
+        <div class="carrinho-topo">
 
-      <div class="hero">
-        <p class="subtitulo-secao">LOJA DE INFORMÁTICA E INFRAESTRUTURA DE REDE</p>
-        <h1 id="titulo-empresa">Equipamento certo para a sua empresa funcionar amanhã cedo.</h1>
-        <p class="texto-destaque">
-          A SmartWeb vende computadores, redes e proteção de dados para pequenas e médias empresas.
-          Indicamos o que o seu negócio usa de verdade e deixamos o resto de fora.
-        </p>
-        <div class="hero-acoes">
-          <button type="button" class="botao botao-primario" data-aba="produtos">
-            Ver produtos
-          </button>
-          <button type="button" class="botao botao-secundario" data-aba="contato">
-            Pedir orçamento
-          </button>
-        </div>
-      </div>
+            <h2 id="titulo-carrinho">Meu pedido</h2>
 
-      <figure class="painel-switch">
-        <img
-          src="switch-24-portas.jpg"
-          alt="Painel frontal de um switch corporativo de 24 portas Gigabit"
-          class="img-responsiva"
-          width="1100"
-          height="120"
-        >
-        <figcaption class="status-portas">
-          <strong>Status das portas:</strong>
-          <span class="porta-item">
-            <span class="indicador verde" aria-hidden="true"></span>
-            Porta 1: Ativa (1 Gbps)
-          </span>
-          <span class="porta-item">
-            <span class="indicador verde" aria-hidden="true"></span>
-            Porta 2: Ativa (1 Gbps)
-          </span>
-          <span class="porta-item">
-            <span class="indicador vermelho" aria-hidden="true"></span>
-            Porta 3: Inativa (Sem link)
-          </span>
-          <span class="porta-item">
-            <span class="indicador verde" aria-hidden="true"></span>
-            Porta 4: Ativa (1 Gbps)
-          </span>
-          <span class="porta-item">
-            <span class="indicador vermelho" aria-hidden="true"></span>
-            Porta 5: Inativa (Sem link)
-          </span>
-        </figcaption>
-      </figure>
+            <button class="btn-fechar"
+                id="fechar-carrinho"
+                aria-label="Fechar carrinho">
+                ✕
+            </button>
 
-      <div class="blocos-institucionais">
-        <section class="bloco-institucional" aria-labelledby="titulo-quem-somos">
-          <p class="subtitulo-secao">QUEM SOMOS</p>
-          <h2 id="titulo-quem-somos">Tecnologia prática para comércio e escritórios</h2>
-          <p>
-            A SmartWeb é uma loja de informática voltada ao comércio e aos escritórios. Vendemos pela
-            internet e também montamos a rede interna do cliente, do cabo ao backup.
-          </p>
-          <p class="texto-secundario">
-            Trabalhamos com linhas para empresas (SMB), que trazem controle de banda, segmentação por VLAN
-            e garantia de balcão. Equipamento doméstico fica fora do catálogo de redes.
-          </p>
-        </section>
-
-        <section class="bloco-institucional" aria-labelledby="titulo-o-que-vendemos">
-          <p class="subtitulo-secao">O QUE VENDEMOS</p>
-          <h2 id="titulo-o-que-vendemos">Linhas completas de atendimento</h2>
-          <div class="grid-institucional">
-            <article class="card-info">
-              <h3>Computadores e notebooks</h3>
-              <p>
-                Máquinas de trabalho para balcão, escritório e home office, com monitor e mini PC.
-              </p>
-            </article>
-            <article class="card-info">
-              <h3>Redes e conectividade</h3>
-              <p>Switches, Wi-Fi corporativo, roteadores e cabeamento CAT6.</p>
-            </article>
-            <article class="card-info">
-              <h3>Armazenamento e proteção</h3>
-              <p>NAS, nobreak senoidal, SSD e discos externos para backup.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="bloco-institucional" aria-labelledby="titulo-como-trabalhamos">
-          <p class="subtitulo-secao">COMO TRABALHAMOS</p>
-          <h2 id="titulo-como-trabalhamos">Padrão de entrega e documentação</h2>
-          <div class="grid-institucional grid-duas-colunas">
-            <article class="card-info">
-              <h3>Rede com folga de 30% a 50%</h3>
-              <p>
-                Eletrocalhas com espaço livre e switches com portas sobrando, para contratar gente sem
-                trocar equipamento.
-              </p>
-            </article>
-            <article class="card-info">
-              <h3>Tudo documentado</h3>
-              <p>
-                Entregamos o mapa de cabeamento, a tabela de IPs e as senhas de administração ao dono
-                da empresa.
-              </p>
-            </article>
-            <article class="card-info">
-              <h3>Servidor do tamanho da necessidade</h3>
-              <p>
-                Servidor de entrada para domínio e aplicações, ou NAS quando o uso é guardar e
-                compartilhar arquivos.
-              </p>
-            </article>
-            <article class="card-info">
-              <h3>Backup 3-2-1</h3>
-              <p>
-                Três cópias dos dados, duas mídias locais diferentes e uma cópia criptografada na
-                nuvem.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="bloco-institucional" aria-labelledby="titulo-atendimento">
-          <p class="subtitulo-secao">ATENDIMENTO</p>
-          <h2 id="titulo-atendimento">Horários de funcionamento</h2>
-          <table class="tabela-atendimento">
-            <caption>Horários de atendimento presencial e online da SmartWeb</caption>
-            <thead>
-              <tr>
-                <th scope="col">Período</th>
-                <th scope="col">Horário / Disponibilidade</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Segunda a sexta</th>
-                <td>8h às 18h</td>
-              </tr>
-              <tr>
-                <th scope="row">Sábado</th>
-                <td>8h às 12h</td>
-              </tr>
-              <tr>
-                <th scope="row">Pedidos pelo site</th>
-                <td>Recebidos todos os dias</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </div>
-    </section>
-
-    <!-- SEÇÃO 2: PRODUTOS -->
-    <section id="produtos" class="secao-aba" aria-labelledby="titulo-produtos" hidden>
-      <div class="cabecalho-secao">
-        <h2 id="titulo-produtos">Catálogo de Produtos</h2>
-        <p class="texto-secundario">
-          Pesquise, filtre por linha ou ordene por preço para montar o seu pedido.
-        </p>
-      </div>
-
-      <div class="controles-catalogo">
-        <div class="controles-topo">
-          <div class="campo-busca-wrapper">
-            <label for="busca">Buscar produto (nome, código ou descrição)</label>
-            <input
-              type="search"
-              id="busca"
-              name="busca"
-              placeholder="Ex.: switch, SSD, NB-PRO14..."
-              autocomplete="off"
-            >
-          </div>
-
-          <div class="campo-ordenacao-wrapper">
-            <label for="ordenacao-preco">Ordenar por preço</label>
-            <select id="ordenacao-preco" name="ordenacao-preco">
-              <option value="padrao">Ordem padrão do catálogo</option>
-              <option value="menor-preco">Menor preço primeiro (crescente)</option>
-              <option value="maior-preco">Maior preço primeiro (decrescente)</option>
-            </select>
-          </div>
         </div>
 
-        <div class="filtros-linhas" role="group" aria-label="Filtrar produtos por linha">
-          <button
-            type="button"
-            class="filtro-btn ativo"
-            data-linha="todas"
-            aria-pressed="true"
-          >
-            Todas as linhas
-          </button>
-          <button
-            type="button"
-            class="filtro-btn"
-            data-linha="comp"
-            aria-pressed="false"
-          >
-            Computadores e notebooks
-          </button>
-          <button
-            type="button"
-            class="filtro-btn"
-            data-linha="rede"
-            aria-pressed="false"
-          >
-            Redes e conectividade
-          </button>
-          <button
-            type="button"
-            class="filtro-btn"
-            data-linha="prot"
-            aria-pressed="false"
-          >
-            Armazenamento e proteção
-          </button>
+        <div id="itens-carrinho"></div>
+
+        <div class="total-carrinho">
+
+            Total:
+            <strong id="total-carrinho">
+                R$ 0,00
+            </strong>
+
         </div>
-      </div>
 
-      <p id="resultadoBusca" class="resultado-busca" aria-live="polite"></p>
-
-      <div id="catalogo" class="catalogo-grid" aria-live="polite"></div>
-
-      <aside id="pedido" class="painel-pedido" aria-labelledby="titulo-pedido">
-        <h3 id="titulo-pedido">Meu pedido</h3>
-        <ul id="lista-pedido" class="lista-pedido"></ul>
-        <p class="pedido-total-linha">
-          Total: <strong id="total" aria-live="polite">R$ 0,00</strong>
-        </p>
-        <p id="feedback-pedido" class="feedback-status" aria-live="polite"></p>
-        <div class="pedido-acoes">
-          <button
-            type="button"
-            id="btn-solicitar-pedido"
-            class="botao botao-primario"
-            data-aba="contato"
-          >
+        <button class="btn-finalizar"
+            id="finalizar">
             Solicitar pedido
-          </button>
-          <button
-            type="button"
-            id="btn-limpar-pedido"
-            class="botao botao-neutro"
-          >
-            Limpar
-          </button>
-        </div>
-      </aside>
-    </section>
+        </button>
 
-    <!-- SEÇÃO 3: CONTATO -->
-    <section id="contato" class="secao-aba" aria-labelledby="titulo-contato" hidden>
-      <div class="cabecalho-secao">
-        <h2 id="titulo-contato">Fale com a SmartWeb</h2>
-        <p class="texto-secundario">Dúvidas, orçamentos e pedidos.</p>
-      </div>
+        <button class="btn-limpar"
+            id="limpar">
+            Limpar pedido
+        </button>
 
-      <div class="contato-grid">
-        <div class="contato-formulario-coluna">
-          <form id="form-contato" class="form-contato" novalidate>
-            <div class="campo-grupo">
-              <label for="nome">
-                Nome <span class="obrigatorio" aria-hidden="true">*</span>
-              </label>
-              <input
-                type="text"
-                id="nome"
-                name="nome"
-                placeholder="Seu nome completo"
-                required
-                aria-describedby="erro-nome"
-              >
-              <span id="erro-nome" class="erro-campo" role="alert"></span>
-            </div>
+    </aside>
 
-            <div class="campo-grupo">
-              <label for="email">
-                E-mail <span class="obrigatorio" aria-hidden="true">*</span>
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="nome@empresa.com.br"
-                required
-                aria-describedby="erro-email"
-              >
-              <span id="erro-email" class="erro-campo" role="alert"></span>
-            </div>
+    <script>
 
-            <div class="campo-grupo">
-              <label for="assunto">Assunto</label>
-              <select id="assunto" name="assunto">
-                <option value="Orçamento">Orçamento</option>
-                <option value="Pedido de compra">Pedido de compra</option>
-                <option value="Projeto de rede">Projeto de rede</option>
-                <option value="Suporte e garantia">Suporte e garantia</option>
-                <option value="Outro assunto">Outro assunto</option>
-              </select>
-            </div>
+        /* =========================
+           DADOS DOS PRODUTOS
+        ========================= */
 
-            <div class="campo-grupo">
-              <label for="msg">
-                Mensagem <span class="obrigatorio" aria-hidden="true">*</span>
-              </label>
-              <textarea
-                id="msg"
-                name="msg"
-                rows="4"
-                placeholder="Descreva os equipamentos ou projeto desejado"
-                required
-                aria-describedby="erro-msg"
-              ></textarea>
-              <span id="erro-msg" class="erro-campo" role="alert"></span>
-            </div>
+        const produtos = [
 
-            <button type="submit" id="btn-enviar-contato" class="botao botao-primario">
-              Montar mensagem
-            </button>
-          </form>
+            {
+                id: 1,
+                nome: "Switch Gigabit 24 portas",
+                categoria: "Redes",
+                preco: 899.90,
+                icone: "🌐",
+                descricao: "Switch para infraestrutura de rede."
+            },
 
-          <div id="resultado" class="resultado-contato" aria-live="polite" hidden></div>
-        </div>
+            {
+                id: 2,
+                nome: "Roteador Wi-Fi 6",
+                categoria: "Redes",
+                preco: 459.90,
+                icone: "📡",
+                descricao: "Conectividade sem fio de alta velocidade."
+            },
 
-        <aside class="canais-contato" aria-label="Canais diretos de atendimento">
-          <h3>Canais diretos</h3>
+            {
+                id: 3,
+                nome: "Access Point",
+                categoria: "Redes",
+                preco: 349.90,
+                icone: "📶",
+                descricao: "Ponto de acesso para redes sem fio."
+            },
 
-          <div class="card-canal">
-            <span class="canal-rotulo">WHATSAPP</span>
-            <div class="canal-linha">
-              <span id="c-wa" class="canal-valor">(51) 99000-0000</span>
-              <button
-                type="button"
-                class="btn-copiar"
-                data-copy-target="c-wa"
-                aria-label="Copiar número do WhatsApp"
-              >
-                Copiar
-              </button>
-            </div>
-          </div>
+            {
+                id: 4,
+                nome: "Teclado USB",
+                categoria: "Informática",
+                preco: 79.90,
+                icone: "⌨️",
+                descricao: "Teclado para computadores."
+            },
 
-          <div class="card-canal">
-            <span class="canal-rotulo">TELEFONE</span>
-            <div class="canal-linha">
-              <span id="c-tel" class="canal-valor">(51) 3000-0000</span>
-              <button
-                type="button"
-                class="btn-copiar"
-                data-copy-target="c-tel"
-                aria-label="Copiar número do telefone"
-              >
-                Copiar
-              </button>
-            </div>
-          </div>
+            {
+                id: 5,
+                nome: "Mouse óptico",
+                categoria: "Acessórios",
+                preco: 39.90,
+                icone: "🖱️",
+                descricao: "Mouse óptico com conexão USB."
+            },
 
-          <div class="card-canal">
-            <span class="canal-rotulo">E-MAIL</span>
-            <div class="canal-linha">
-              <span id="c-mail" class="canal-valor">contato@SmartWebinformatica.com.br</span>
-              <button
-                type="button"
-                class="btn-copiar"
-                data-copy-target="c-mail"
-                aria-label="Copiar endereço de e-mail"
-              >
-                Copiar
-              </button>
-            </div>
-          </div>
+            {
+                id: 6,
+                nome: "Cabo de rede CAT6",
+                categoria: "Acessórios",
+                preco: 29.90,
+                icone: "🔌",
+                descricao: "Cabo para conexão de rede."
+            },
 
-          <p id="feedback-copia" class="feedback-status" aria-live="polite"></p>
+            {
+                id: 7,
+                nome: "SSD 480GB",
+                categoria: "Informática",
+                preco: 299.90,
+                icone: "💾",
+                descricao: "Armazenamento de alta velocidade."
+            },
 
-          <p class="texto-secundario canal-observacao">
-            Respondemos em até um dia útil. Para projeto de rede, informe quantos computadores,
-            impressoras e pontos de Wi-Fi a empresa tem hoje.
-          </p>
-        </aside>
-      </div>
-    </section>
+            {
+                id: 8,
+                nome: "Memória RAM 8GB",
+                categoria: "Informática",
+                preco: 189.90,
+                icone: "🧩",
+                descricao: "Memória para computadores."
+            },
 
-    <!-- SEÇÃO 4: PERGUNTAS FREQUENTES -->
-    <section id="faq" class="secao-aba" aria-labelledby="titulo-faq" hidden>
-      <div class="cabecalho-secao">
-        <h2 id="titulo-faq">Perguntas frequentes</h2>
-        <p class="texto-secundario">
-          Selecione uma pergunta por clique ou teclado (Enter ou Espaço) para ler a resposta.
-        </p>
-      </div>
+            {
+                id: 9,
+                nome: "Conector RJ45",
+                categoria: "Acessórios",
+                preco: 2.50,
+                icone: "🔗",
+                descricao: "Conector para cabos de rede."
+            }
 
-      <div class="faq-lista">
-        <article class="faq-item">
-          <h3>
-            <button
-              type="button"
-              class="faq-pergunta"
-              aria-expanded="false"
-              aria-controls="faq-resp-1"
-            >
-              Como faço um pedido?
-            </button>
-          </h3>
-          <div id="faq-resp-1" class="resposta" hidden>
-            <p>
-              Na aba Produtos, adicione os itens ao pedido e clique em Solicitar pedido. A mensagem já
-              sai com a lista e o total. Depois é só enviá-la pelo WhatsApp ou pelo e-mail da loja.
-            </p>
-          </div>
-        </article>
+        ];
 
-        <article class="faq-item">
-          <h3>
-            <button
-              type="button"
-              class="faq-pergunta"
-              aria-expanded="false"
-              aria-controls="faq-resp-2"
-            >
-              Quais são as formas de pagamento?
-            </button>
-          </h3>
-          <div id="faq-resp-2" class="resposta" hidden>
-            <p>
-              Pix, boleto, cartão de crédito em até 10 vezes e faturamento para empresas com cadastro
-              aprovado.
-            </p>
-          </div>
-        </article>
+        /* =========================
+           VARIÁVEIS
+        ========================= */
 
-        <article class="faq-item">
-          <h3>
-            <button
-              type="button"
-              class="faq-pergunta"
-              aria-expanded="false"
-              aria-controls="faq-resp-3"
-            >
-              Qual é o prazo de entrega?
-            </button>
-          </h3>
-          <div id="faq-resp-3" class="resposta" hidden>
-            <p>
-              Itens em estoque saem em até 2 dias úteis. Equipamentos de rede sob encomenda levam de 5 a
-              10 dias úteis, e avisamos o prazo no orçamento.
-            </p>
-          </div>
-        </article>
+        let pedido = [];
 
-        <article class="faq-item">
-          <h3>
-            <button
-              type="button"
-              class="faq-pergunta"
-              aria-expanded="false"
-              aria-controls="faq-resp-4"
-            >
-              Os produtos têm garantia e nota fiscal?
-            </button>
-          </h3>
-          <div id="faq-resp-4" class="resposta" hidden>
-            <p>
-              Sim. Todos os produtos têm nota fiscal e garantia do fabricante. Equipamentos de linha
-              empresarial costumam ter garantia estendida, informada na página de cada item.
-            </p>
-          </div>
-        </article>
+        const listaProdutos =
+            document.getElementById("lista-produtos");
 
-        <article class="faq-item">
-          <h3>
-            <button
-              type="button"
-              class="faq-pergunta"
-              aria-expanded="false"
-              aria-controls="faq-resp-5"
-            >
-              Vocês instalam a rede da minha empresa?
-            </button>
-          </h3>
-          <div id="faq-resp-5" class="resposta" hidden>
-            <p>
-              Fazemos o projeto, o cabeamento e a configuração. A entrega inclui o mapa de cabeamento, a
-              tabela de endereços IP e as senhas dos equipamentos.
-            </p>
-          </div>
-        </article>
+        const carrinho =
+            document.getElementById("carrinho");
 
-        <article class="faq-item">
-          <h3>
-            <button
-              type="button"
-              class="faq-pergunta"
-              aria-expanded="false"
-              aria-controls="faq-resp-6"
-            >
-              Qual servidor eu devo comprar?
-            </button>
-          </h3>
-          <div id="faq-resp-6" class="resposta" hidden>
-            <p>
-              Depende do uso. Para guardar arquivos e fazer backup, um NAS atende bem e gasta menos
-              energia. Para controle de domínio ou sistemas de gestão, indicamos um servidor em torre
-              de entrada.
-            </p>
-          </div>
-        </article>
+        const backdrop =
+            document.getElementById("backdrop");
 
-        <article class="faq-item">
-          <h3>
-            <button
-              type="button"
-              class="faq-pergunta"
-              aria-expanded="false"
-              aria-controls="faq-resp-7"
-            >
-              Posso trocar um produto?
-            </button>
-          </h3>
-          <div id="faq-resp-7" class="resposta" hidden>
-            <p>
-              Compras feitas pelo site podem ser devolvidas em até 7 dias corridos após o recebimento,
-              com o produto lacrado e sem uso.
-            </p>
-          </div>
-        </article>
+        const formatarMoeda = valor =>
+            valor.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            });
 
-        <!-- 8ª Pergunta Extra — Ficha da Equipe (Seção 4) -->
-        <article class="faq-item">
-          <h3>
-            <button
-              type="button"
-              class="faq-pergunta"
-              aria-expanded="false"
-              aria-controls="faq-resp-8"
-            >
-              Como posso ordenar os produtos pelo preço do catálogo?
-            </button>
-          </h3>
-          <div id="faq-resp-8" class="resposta" hidden>
-            <p>
-              Na aba Produtos, utilize o seletor "Ordenar por preço" para organizar os equipamentos por
-              menor preço (ordem crescente) ou maior preço (ordem decrescente), inclusive em conjunto
-              com a busca e os filtros por linha.
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
+        /* =========================
+           NAVEGAÇÃO
+        ========================= */
 
-  <footer class="rodape">
-    <div class="container">
-      <p>
-        © <span id="ano-atual">2026</span> SmartWeb Informática. Site desenvolvido por Baré Tech Sistemas S.A.
-        Produtos, preços e contatos são exemplos.
-      </p>
-    </div>
-  </footer>
+        function abrirAba(nome) {
 
-  <script src="js/app.js"></script>
+            document.querySelectorAll(".aba").forEach(aba => {
+                aba.classList.remove("ativa");
+            });
+
+            document.querySelectorAll(".menu-abas button").forEach(botao => {
+                botao.classList.remove("ativo");
+            });
+
+            document.getElementById(nome).classList.add("ativa");
+
+            const botao = document.querySelector(
+                `[data-aba="${nome}"]`
+            );
+
+            if (botao) {
+                botao.classList.add("ativo");
+            }
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+        document.querySelectorAll("[data-aba]").forEach(botao => {
+
+            botao.addEventListener("click", () => {
+                abrirAba(botao.dataset.aba);
+            });
+
+        });
+
+        document.querySelectorAll("[data-ir]").forEach(botao => {
+
+            botao.addEventListener("click", () => {
+                abrirAba(botao.dataset.ir);
+            });
+
+        });
+
+        /* =========================
+           EXIBIR PRODUTOS
+        ========================= */
+
+        function mostrarProdutos() {
+
+            const busca = document
+                .getElementById("busca")
+                .value.toLowerCase();
+
+            const categoria = document
+                .getElementById("categoria")
+                .value;
+
+            const ordenar = document
+                .getElementById("ordenar")
+                .value;
+
+            let filtrados = produtos.filter(produto => {
+
+                const nomeEncontrado =
+                    produto.nome.toLowerCase().includes(busca);
+
+                const categoriaEncontrada =
+                    categoria === "todos" ||
+                    produto.categoria === categoria;
+
+                return nomeEncontrado && categoriaEncontrada;
+
+            });
+
+            if (ordenar === "menor") {
+                filtrados.sort((a, b) => a.preco - b.preco);
+            }
+
+            if (ordenar === "maior") {
+                filtrados.sort((a, b) => b.preco - a.preco);
+            }
+
+            document.getElementById("resultado-busca").textContent =
+                `${filtrados.length} produto(s) encontrado(s).`;
+
+            listaProdutos.innerHTML = "";
+
+            filtrados.forEach(produto => {
+
+                const card = document.createElement("article");
+
+                card.className = "produto";
+
+                const imagem = document.createElement("div");
+                imagem.className = "produto-imagem";
+                imagem.setAttribute("aria-hidden", "true");
+                imagem.textContent = produto.icone;
+
+                const titulo = document.createElement("h3");
+                titulo.textContent = produto.nome;
+
+                const categoriaElemento = document.createElement("span");
+                categoriaElemento.className = "categoria";
+                categoriaElemento.textContent = produto.categoria;
+
+                const descricao = document.createElement("p");
+                descricao.textContent = produto.descricao;
+
+                const preco = document.createElement("p");
+                preco.className = "preco";
+                preco.textContent = formatarMoeda(produto.preco);
+
+                const botao = document.createElement("button");
+                botao.className = "btn-adicionar";
+                botao.textContent = "Adicionar ao pedido";
+
+                botao.addEventListener("click", () => {
+                    adicionarProduto(produto.id);
+                });
+
+                card.append(
+                    imagem,
+                    titulo,
+                    categoriaElemento,
+                    descricao,
+                    preco,
+                    botao
+                );
+
+                listaProdutos.appendChild(card);
+
+            });
+
+        }
+
+        document.getElementById("busca")
+            .addEventListener("input", mostrarProdutos);
+
+        document.getElementById("categoria")
+            .addEventListener("change", mostrarProdutos);
+
+        document.getElementById("ordenar")
+            .addEventListener("change", mostrarProdutos);
+
+        /* =========================
+           ADICIONAR PRODUTO
+        ========================= */
+
+        function adicionarProduto(id) {
+
+            const produto = produtos.find(p => p.id === id);
+
+            const existente = pedido.find(p => p.id === id);
+
+            if (existente) {
+                existente.quantidade++;
+            } else {
+                pedido.push({
+                    ...produto,
+                    quantidade: 1
+                });
+            }
+
+            atualizarCarrinho();
+
+        }
+
+        /* =========================
+           REMOVER PRODUTO
+        ========================= */
+
+        function removerProduto(id) {
+
+            pedido = pedido.filter(p => p.id !== id);
+
+            atualizarCarrinho();
+
+        }
+
+        /* =========================
+           ATUALIZAR CARRINHO
+        ========================= */
+
+        function atualizarCarrinho() {
+
+            const quantidade = pedido.reduce(
+                (total, produto) => total + produto.quantidade,
+                0
+            );
+
+            const total = pedido.reduce(
+                (soma, produto) =>
+                    soma + produto.preco * produto.quantidade,
+                0
+            );
+
+            document.getElementById("quantidade").textContent =
+                quantidade;
+
+            document.getElementById("resumo-quantidade").textContent =
+                quantidade;
+
+            document.getElementById("resumo-total").textContent =
+                formatarMoeda(total);
+
+            document.getElementById("total-carrinho").textContent =
+                formatarMoeda(total);
+
+            const lista = document.getElementById("itens-carrinho");
+
+            lista.innerHTML = "";
+
+            if (pedido.length === 0) {
+
+                lista.textContent = "Seu pedido está vazio.";
+
+            }
+
+            pedido.forEach(produto => {
+
+                const item = document.createElement("div");
+                item.className = "item-carrinho";
+
+                const nome = document.createElement("strong");
+                nome.textContent = produto.nome;
+
+                const detalhes = document.createElement("p");
+                detalhes.textContent =
+                    `${produto.quantidade} x ${formatarMoeda(produto.preco)}`;
+
+                const botao = document.createElement("button");
+                botao.textContent = "Remover";
+
+                botao.addEventListener("click", () => {
+                    removerProduto(produto.id);
+                });
+
+                item.append(nome, detalhes, botao);
+
+                lista.appendChild(item);
+
+            });
+
+        }
+
+        /* =========================
+           ABRIR E FECHAR CARRINHO
+        ========================= */
+
+        function abrirCarrinho() {
+
+            carrinho.hidden = false;
+            backdrop.hidden = false;
+
+            document.getElementById("abrir-carrinho")
+                .setAttribute("aria-expanded", "true");
+
+            document.getElementById("fechar-carrinho")
+                .focus();
+
+        }
+
+        function fecharCarrinho() {
+
+            carrinho.hidden = true;
+            backdrop.hidden = true;
+
+            document.getElementById("abrir-carrinho")
+                .setAttribute("aria-expanded", "false");
+
+            document.getElementById("abrir-carrinho")
+                .focus();
+
+        }
+
+        document.getElementById("abrir-carrinho")
+            .addEventListener("click", abrirCarrinho);
+
+        document.getElementById("ver-pedido")
+            .addEventListener("click", abrirCarrinho);
+
+        document.getElementById("fechar-carrinho")
+            .addEventListener("click", fecharCarrinho);
+
+        backdrop.addEventListener("click", fecharCarrinho);
+
+        document.addEventListener("keydown", evento => {
+
+            if (evento.key === "Escape" && !carrinho.hidden) {
+                fecharCarrinho();
+            }
+
+        });
+
+        /* =========================
+           LIMPAR PEDIDO
+        ========================= */
+
+        document.getElementById("limpar")
+            .addEventListener("click", () => {
+
+                if (pedido.length === 0) return;
+
+                if (confirm("Deseja realmente limpar seu pedido?")) {
+
+                    pedido = [];
+
+                    atualizarCarrinho();
+
+                }
+
+            });
+
+        /* =========================
+           FINALIZAR PEDIDO
+        ========================= */
+
+        document.getElementById("finalizar")
+            .addEventListener("click", () => {
+
+                if (pedido.length === 0) {
+
+                    alert("Adicione produtos ao pedido primeiro.");
+
+                    return;
+
+                }
+
+                const total = pedido.reduce(
+                    (soma, produto) =>
+                        soma + produto.preco * produto.quantidade,
+                    0
+                );
+
+                let mensagem = "Olá! Gostaria de solicitar um orçamento:\n\n";
+
+                pedido.forEach(produto => {
+
+                    mensagem +=
+                        `${produto.nome} - Quantidade: ${produto.quantidade}\n`;
+
+                });
+
+                mensagem += `\nTotal: ${formatarMoeda(total)}`;
+
+                mensagem += "\n\nAguardo retorno!";
+
+                const telefone = "5592999990000";
+
+                const url =
+                    `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+                window.open(url, "_blank", "noopener,noreferrer");
+
+            });
+
+        /* =========================
+           FORMULÁRIO DE CONTATO
+        ========================= */
+
+        document.getElementById("form-contato")
+            .addEventListener("submit", evento => {
+
+                evento.preventDefault();
+
+                const nome =
+                    document.getElementById("nome").value.trim();
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const mensagem =
+                    document.getElementById("mensagem").value.trim();
+
+                let valido = true;
+
+                document.querySelectorAll(".erro").forEach(elemento => {
+                    elemento.textContent = "";
+                });
+
+                if (nome.length < 3) {
+
+                    document.getElementById("erro-nome")
+                        .textContent = "Informe um nome válido.";
+
+                    valido = false;
+
+                }
+
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+
+                    document.getElementById("erro-email")
+                        .textContent = "Informe um e-mail válido.";
+
+                    valido = false;
+
+                }
+
+                if (mensagem.length < 10) {
+
+                    document.getElementById("erro-mensagem")
+                        .textContent = "A mensagem deve ter pelo menos 10 caracteres.";
+
+                    valido = false;
+
+                }
+
+                if (!valido) return;
+
+                const assunto = encodeURIComponent(
+                    "Contato pelo site SmartWeb"
+                );
+
+                const corpo = encodeURIComponent(
+                    `Nome: ${nome}\nE-mail: ${email}\n\nMensagem:\n${mensagem}`
+                );
+
+                document.getElementById("resultado-form").textContent =
+                    "Abrindo seu aplicativo de e-mail...";
+
+                window.location.href =
+                    `mailto:contato@smartwebinformatica.com.br?subject=${assunto}&body=${corpo}`;
+
+            });
+
+        /* =========================
+           COPIAR CONTATOS
+        ========================= */
+
+        document.querySelectorAll("[data-copiar]")
+            .forEach(botao => {
+
+                botao.addEventListener("click", async () => {
+
+                    const elemento = document.getElementById(
+                        botao.dataset.copiar
+                    );
+
+                    try {
+
+                        await navigator.clipboard.writeText(
+                            elemento.textContent.trim()
+                        );
+
+                        document.getElementById("aviso-copia")
+                            .textContent = "Informação copiada!";
+
+                    } catch {
+
+                        document.getElementById("aviso-copia")
+                            .textContent = "Não foi possível copiar automaticamente.";
+
+                    }
+
+                });
+
+            });
+
+        /* =========================
+           ANO AUTOMÁTICO
+        ========================= */
+
+        document.getElementById("ano").textContent =
+            new Date().getFullYear();
+
+        /* =========================
+           INICIALIZAÇÃO
+        ========================= */
+
+        mostrarProdutos();
+
+        atualizarCarrinho();
+
+    </script>
+
 </body>
 </html>
