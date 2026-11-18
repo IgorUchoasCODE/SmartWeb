@@ -522,7 +522,7 @@ function alternarAba(idAba) {
   botoesAba.forEach((botao) => {
     const ativa = botao.dataset.aba === idAba;
     botao.classList.toggle("ativa", ativa);
-    botao.setAttribute("aria-selected", String(ativa));
+    botao.setAttribute("aria-pressed", String(ativa));
     if (ativa) {
       botao.setAttribute("aria-current", "page");
     } else {
