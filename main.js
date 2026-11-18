@@ -75,12 +75,12 @@ function limpar() {
 
 function enviar() {
   var nome = document.getElementById("nome").value
-  var email = document.getElemetById("email").value
+  var email = document.getElementById("email").value
   var msg = document.getElementById("msg").value
   if (nome == "") {
     alert("ERRO!!!")
   }
-  if (email.indexOf("@") = -1) {
+  if (email.indexOf("@") === -1) {
     alert("ERRO NO EMAIL")
   }
   if (msg == "") alert("ERRO")
@@ -92,5 +92,5 @@ function copiar(id) {
   alert("copiado")
 }
 
-window.onload = montaCatalogo;
+document.addEventListener("DOMContentLoaded", montaCatalogo);
 
