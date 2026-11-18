@@ -1,350 +1,1205 @@
-
 /* ==========================================================================
- PROJETO: Desafio Resgate da SmartWeb
- DISCIPLINA: Desenvolvimento Web I - 2º Período FACULDADE: Senac AM - FATESE | Prof. João Marcos Aires Duarte
-AUTORIA: Equipe [INSERIR CÓDIGO DA EQUIPE AQUI, ex: EQ01]
-ARQUIVO: css/estilos.css (CSS3 Mobile-First, Flexbox, Grid e Acessível)
- ========================================================================== */9 /*
- BLOCO: Variáveis de Customização (Custom Properties)
- PARA QUE SERVE: Centralizar o tema visual, paleta de cores e espaçamentos do site.
- O QUE FAZ: Define tokens reutilizáveis em todo o CSS através de var(--eqX-...)
-RESPONSABILIDADE: Manutenção visual ágil, consistência e garantia de contraste mínimo 4.5:1 (Unidade 3 e 5).
-=== FICHA DA EQUIPE: Substitua o prefixo '--eqX-' pelo código da sua equipe (ex: '--eq01-') ===
-*/
+   PROJETO: Desafio Resgate da SmartWeb
+   DISCIPLINA: Desenvolvimento Web I - 2º Período
+   FACULDADE: Senac AM - FATESE | Prof. João Marcos Aires Duarte
+   AUTORIA: Equipe EQ01 (Desafio do Grupo: Ordenação de Preços)
+   ARQUIVO: staly.css (CSS3 Mobile-First, Flexbox, Grid e Acessível)
+   ========================================================================== */
 
+/*
+   BLOCO: Variáveis de Customização (Custom Properties)
+   PARA QUE SERVE: Centralizar o tema visual, paleta de cores e espaçamentos do site.
+   O QUE FAZ: Define tokens reutilizáveis com o prefixo da equipe (--eq01-*) e aliases de compatibilidade.
+   RESPONSABILIDADE: Manutenção visual ágil, consistência e contraste mínimo 4.5:1 (Unidades 3 e 5).
+*/
 :root {
---cor-primaria: #0a5896; /* Azul escuro (contraste 7.2:1 com fundo branco - WCAG AAA) */
---cor-primaria-hover: #073f6b; /* Azul mais escuro para estados interativos de foco/hover */
---cor-destaque: #ffd600; /* Amarelo da marca para botões e detalhes */
---cor-destaque-hover: #e6c200; /* Tom ligeiramente escurecido para clique/hover */
---cor-destaque-texto: #1a1a1a; /* Texto escuro sobre amarelo para contraste 14:1 */
---cor-texto: #1f2937; /* Cinza grafite muito escuro para corpo de texto (contraste 14.6:1) */
---cor-texto-secundario: #4b5563; /* Cinza médio de apoio (contraste 7.5:1 com branco) */
---cor-fundo: #ffffff; /* Fundo principal limpo */
---cor-fundo-alt: #f3f4f6; /* Fundo alternado para cartões e faixas secundárias */
---cor-borda: #d1d5db; /* Cor de linhas divisórias e bordas de campos */
---cor-erro: #b91c1c; /* Vermelho escuro acessível para mensagens de erro (contraste 6.4:1) */
---cor-sucesso: #15803d; /* Verde escuro acessível para confirmações (contraste 5.1:1) */
---cor-foco: #d97706; /* Âmbar vibrante para o anel de foco do teclado */
-/* Escala de espaçamentos relativos em rem (Unidade 3.8) */
---espaco-xs: 0.25rem; /* 4px */
---espaco-sm: 0.5rem; /* 8px */
---espaco-md: 1rem; /* 16px */
---espaco-lg: 1.5rem; /* 24px */
---espaco-xl: 2.5rem; /* 40px */
---raio-borda: 0.375rem; /* 6px */
---fonte-principal: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
- }
- 
+  /* Ficha da Equipe EQ01 — Tokens Oficiais */
+  --eq01-cor-primaria: #0a5896;           /* Azul corporativo (contraste 7.2:1 com branco - WCAG AAA) */
+  --eq01-cor-primaria-hover: #073f6b;     /* Azul mais escuro para hover e estados ativos */
+  --eq01-cor-destaque: #ffd600;           /* Amarelo da marca para botões e destaques */
+  --eq01-cor-destaque-hover: #e6c200;     /* Tom ajustado para hover com alto contraste */
+  --eq01-cor-destaque-texto: #1a1a1a;     /* Texto escuro sobre amarelo (contraste ~13.3:1) */
+  --eq01-cor-texto: #1f2937;              /* Cinza grafite para texto principal (contraste 14.6:1) */
+  --eq01-cor-texto-secundario: #4b5563;   /* Cinza médio de apoio (contraste 7.5:1 com branco) */
+  --eq01-cor-fundo: #ffffff;              /* Fundo principal limpo */
+  --eq01-cor-fundo-alt: #f3f4f6;          /* Fundo alternado para painéis e cartões */
+  --eq01-cor-borda: #d1d5db;              /* Bordas sutis de campos e divisórias */
+  --eq01-cor-erro: #b91c1c;               /* Vermelho acessível para erros (contraste 6.4:1) */
+  --eq01-cor-sucesso: #15803d;            /* Verde acessível para confirmações (contraste 5.1:1) */
+  --eq01-cor-foco: #d97706;               /* Âmbar visível para anel de foco no teclado */
+
+  /* Escala de espaçamentos relativos em rem (Unidade 3.8) */
+  --eq01-espaco-xs: 0.25rem;
+  --eq01-espaco-sm: 0.5rem;
+  --eq01-espaco-md: 1rem;
+  --eq01-espaco-lg: 1.5rem;
+  --eq01-espaco-xl: 2.5rem;
+  --eq01-raio-borda: 0.375rem;
+  --eq01-fonte-principal: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Aliases de compatibilidade com rascunho inicial (--eqX-*) */
+  --eqX-cor-primaria: var(--eq01-cor-primaria);
+  --eqX-cor-primaria-hover: var(--eq01-cor-primaria-hover);
+  --eqX-cor-destaque: var(--eq01-cor-destaque);
+  --eqX-cor-destaque-hover: var(--eq01-cor-destaque-hover);
+  --eqX-cor-destaque-texto: var(--eq01-cor-destaque-texto);
+  --eqX-cor-texto: var(--eq01-cor-texto);
+  --eqX-cor-texto-secundario: var(--eq01-cor-texto-secundario);
+  --eqX-cor-fundo: var(--eq01-cor-fundo);
+  --eqX-cor-fundo-alt: var(--eq01-cor-fundo-alt);
+  --eqX-cor-borda: var(--eq01-cor-borda);
+  --eqX-cor-erro: var(--eq01-cor-erro);
+  --eqX-cor-sucesso: var(--eq01-cor-sucesso);
+  --eqX-cor-foco: var(--eq01-cor-foco);
+  --eqX-espaco-xs: var(--eq01-espaco-xs);
+  --eqX-espaco-sm: var(--eq01-espaco-sm);
+  --eqX-espaco-md: var(--eq01-espaco-md);
+  --eqX-espaco-lg: var(--eq01-espaco-lg);
+  --eqX-espaco-xl: var(--eq01-espaco-xl);
+  --eqX-raio-borda: var(--eq01-raio-borda);
+  --eqX-fonte-principal: var(--eq01-fonte-principal);
+}
+
+/*
+   BLOCO: Reset Seguro e Box Sizing
+   PARA QUE SERVE: Padronizar margens, preenchimentos e cálculo de largura entre navegadores.
+   O QUE FAZ: Aplica box-sizing: border-box em todos os elementos e pseudoelementos.
+   RESPONSABILIDADE: Evitar que padding e borda quebrem a largura responsiva (Unidade 3.3).
+*/
 *,
 *::before,
 *::after {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /*
-BLOCO: Estilos Base do Corpo (Body)
-PARA QUE SERVE: Configurar a tipografia, cores e ocupação total da viewport.
-O QUE FAZ: Aplica a fonte do sistema, altura mínima de 100vh e layout flex vertical para fixar o rodapé.
-RESPONSABILIDADE: Manter o rodapé no final da página e legibilidade agradável (Unidade 3).
+   BLOCO: Estilos Base do Corpo (Body)
+   PARA QUE SERVE: Configurar tipografia, cores e ocupação total da viewport.
+   O QUE FAZ: Aplica fonte legível, altura mínima de 100vh e flex em coluna para fixar o rodapé.
+   RESPONSABILIDADE: Garantir leitura confortável e zero rolagem horizontal em 360px (Unidade 3).
 */
 html {
-overflow-x: hidden;
-width: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
-font-family: var(--eqX-fonte-principal);
-font-size: 1rem;
-line-height: 1.6;
-color: var(--eqX-cor-texto);
-background-color: var(--eqX-cor-fundo);
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-overflow-x: hidden;
-width: 100%;
-max-width: 100%;
-position: relative;
+  font-family: var(--eq01-fonte-principal);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--eq01-cor-texto);
+  background-color: var(--eq01-cor-fundo);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /*
-BLOCO: Foco Visível para Teclado (:focus-visible)
-PARA QUE SERVE: Tornar imediatamente visível qual elemento possui o foco da navegação por teclado.
-O QUE FAZ: Desenha um anel sólido de 3px com recuo quando o usuário navega com a tecla Tab.
-RESPONSABILIDADE: Substituir o 'outline: none' proibido e atender à WCAG 2.4.7 (Foco Visível) / Unidade 5.
+   BLOCO: Foco Visível para Teclado (:focus-visible)
+   PARA QUE SERVE: Tornar evidente qual controle possui o foco na navegação por teclado.
+   O QUE FAZ: Substitui o antigo 'outline: none !important' por um contorno nítido e contrastado.
+   RESPONSABILIDADE: Conformidade com WCAG 2.4.7 (Foco Visível) / Unidade 5.
 */
 :focus-visible {
-outline: 3px solid var(--eqX-cor-foco);
-outline-offset: 2px;
+  outline: 3px solid var(--eq01-cor-foco);
+  outline-offset: 2px;
 }
 
 /*
-BLOCO: Link de Salto (Skip Link)
-PARA QUE SERVE: Oferecer rota expressa para o conteúdo central ignorando cabeçalhos repetitivos.
-O QUE FAZ: Fica fora da área visível até receber foco pelo teclado, quando surge no topo da tela.
-RESPONSABILIDADE: Acessibilidade de navegação para leitores de tela e utilizadores de teclado (Unidade 5).
-
-*/ 
-
+   BLOCO: Link de Salto (Skip Link)
+   PARA QUE SERVE: Permitir que usuários de teclado e leitores de tela pulem o menu repetitivo.
+   O QUE FAZ: Fica oculto fora da tela até receber foco via tecla Tab.
+   RESPONSABILIDADE: Navegação acessível direta ao conteúdo principal (Unidade 5).
+*/
 .skip-link {
-position: absolute;
-top: -100px;
-left: 1rem;
-background-color: var(--eqX-cor-destaque);
-color: var(--eqX-cor-destaque-texto);
-padding: var(--eqX-espaco-sm) var(--eqX-espaco-md);
-font-weight: 700;
-border-radius: var(--eqX-raio-borda);
-text-decoration: none;
-z-index: 9999;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-transition: top 0.2s ease;
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background-color: var(--eq01-cor-destaque);
+  color: var(--eq01-cor-destaque-texto);
+  padding: var(--eq01-espaco-sm) var(--eq01-espaco-md);
+  font-weight: 700;
+  border-radius: var(--eq01-raio-borda);
+  text-decoration: none;
+  z-index: 9999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: top 0.2s ease;
 }
 
 .skip-link:focus {
-top: 1rem;
+  top: 1rem;
 }
 
 /*
-BLOCO: Contêiner de Largura Controlada
-PARA QUE SERVE: Centralizar o conteúdo nas telas grandes e manter margens seguras no celular.
-O QUE FAZ: Define largura máxima de 72rem (1152px) com margin: 0 auto e preenchimento lateral.
-RESPONSABILIDADE: Prevenir linhas de texto excessivamente longas e preservar o alinhamento visual (Unidade 3).
+   BLOCO: Contêiner de Largura Controlada
+   PARA QUE SERVE: Centralizar o conteúdo nas telas maiores mantendo margens laterais no celular.
+   O QUE FAZ: Define max-width de 72rem com padding lateral relativo.
+   RESPONSABILIDADE: Preservar alinhamento e legibilidade (Unidade 3).
 */
 .container {
-width: 100%;
-max-width: 72rem;
-margin: 0 auto;
-padding: 0 var(--eqX-espaco-md);
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 var(--eq01-espaco-md);
 }
 
 /*
-BLOCO: Imagens Fluidas e Responsivas
-PARA QUE SERVE: Impedir que imagens ultrapassem os limites da tela do usuário.
-O QUE FAZ: Garante max-width: 100% e altura proporcional automática.
-RESPONSABILIDADE: Evitar quebras de layout e rolagem horizontal em dispositivos móveis (Unidade 3.7).
+   BLOCO: Imagens Fluidas e Responsivas
+   PARA QUE SERVE: Impedir que imagens ultrapassem a largura da tela em dispositivos móveis.
+   O QUE FAZ: Garante max-width: 100% e altura proporcional automática.
+   RESPONSABILIDADE: Evitar estouro horizontal em 360px e zoom 200% (Unidade 3.7).
 */
 .img-responsiva {
-max-width: 100%;
-height: auto;
-display: block;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /*
-BLOCO: Hierarquia Tipográfica
-PARA QUE SERVE: Padronizar o tamanho, peso e espaçamento dos títulos do sumário do site.
-O QUE FAZ: Ajusta tamanhos relativos com margens inferiores padronizadas em variáveis.
-RESPONSABILIDADE: Construir uma hierarquia visual correspondente à semântica de títulos (Unidade 2.6).
+   BLOCO: Hierarquia Tipográfica
+   PARA QUE SERVE: Padronizar tamanhos relativos e espaçamento dos títulos sem saltos de nível.
+   O QUE FAZ: Define escala coerente entre h1, h2 e h3 em unidades rem.
+   RESPONSABILIDADE: Acompanhar a semântica de títulos HTML5 (Unidade 2.6).
 */
 h1 {
-font-size: 1.75rem;
-line-height: 1.25;
-margin-bottom: var(--eqX-espaco-md);
-color: var(--eqX-cor-texto);
+  font-size: 1.75rem;
+  line-height: 1.25;
+  margin-bottom: var(--eq01-espaco-md);
+  color: var(--eq01-cor-texto);
 }
 
 h2 {
-font-size: 1.35rem;
-margin-bottom: var(--eqX-espaco-sm);
-color: var(--eqX-cor-texto);
+  font-size: 1.4rem;
+  line-height: 1.3;
+  margin-bottom: var(--eq01-espaco-sm);
+  color: var(--eq01-cor-texto);
 }
 
 h3 {
-font-size: 1.125rem;
-margin-bottom: var(--eqX-espaco-xs);
-color: var(--eqX-cor-texto);
+  font-size: 1.125rem;
+  line-height: 1.35;
+  margin-bottom: var(--eq01-espaco-xs);
+  color: var(--eq01-cor-texto);
 }
 
 .texto-secundario {
-color: var(--eqX-cor-texto-secundario);
+  color: var(--eq01-cor-texto-secundario);
 }
 
 /*
-BLOCO: Topo do Site (Header)
-PARA QUE SERVE: Conter o logotipo da empresa e o botão de acesso rápido ao pedido.
-O QUE FAZ: Aplica a cor primária de fundo e alinha marca e pedido via Flexbox.
-RESPONSABILIDADE: Apresentação da identidade visual corporativa (Unidade 3).
+   BLOCO: Topo do Site (Header)
+   PARA QUE SERVE: Conter o logotipo da empresa e o botão de acesso rápido ao pedido.
+   O QUE FAZ: Aplica cor primária com alto contraste e alinha marca e botão via Flexbox.
+   RESPONSABILIDADE: Substituir a antiga tabela de layout do #topo (Unidade 3).
 */
 .topo {
-background-color: var(--eqX-cor-primaria);
-color: #ffffff;
-padding: var(--eqX-espaco-md) 0;
+  background-color: var(--eq01-cor-primaria);
+  color: #ffffff;
+  padding: var(--eq01-espaco-md) 0;
 }
 
 .topo-conteudo {
-display: flex;
-flex-direction: column;
-align-items: stretch;
-gap: var(--eqX-espaco-sm);
-width: 100%;
-min-width: 0;
-box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--eq01-espaco-sm);
+  width: 100%;
+  min-width: 0;
 }
 
 .marca {
-display: flex;
-align-items: center;
-justify-content: flex-start;
-gap: var(--eqX-espaco-md);
-min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--eq01-espaco-md);
+  min-width: 0;
 }
 
 .logo-img {
-border-radius: var(--eqX-raio-borda);
-background-color: #ffffff;
-padding: 2px;
-flex-shrink: 0;
+  border-radius: var(--eq01-raio-borda);
+  background-color: #ffffff;
+  padding: 2px;
+  flex-shrink: 0;
 }
 
 .logo-titulo {
-display: block;
-font-size: 1.5rem;
-font-weight: 800;
-letter-spacing: -0.02em;
-color: #ffffff;
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
 }
 
 .logo-subtitulo {
-display: block;
-font-size: 0.75rem;
-letter-spacing: 0.12em;
-color: var(--eqX-cor-destaque);
-font-weight: 700;
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--eq01-cor-destaque);
+  font-weight: 700;
 }
 
 .btn-pedido-topo {
-width: 100%;
-background-color: var(--eqX-cor-destaque);
-color: var(--eqX-cor-destaque-texto);
-font-weight: 700;
-font-size: 0.95rem;
-padding: var(--eqX-espaco-sm) var(--eqX-espaco-md);
-} 
-
-border: none;
-border-radius: var(--eqX-raio-borda);
-cursor: pointer;
-transition: background-color 0.2s ease;
-text-align: center;
-box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  background-color: var(--eq01-cor-destaque);
+  color: var(--eq01-cor-destaque-texto);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: var(--eq01-espaco-sm) var(--eq01-espaco-md);
+  border: none;
+  border-radius: var(--eq01-raio-borda);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: center;
 }
 
 .btn-pedido-topo:hover {
-background-color: var(--eqX-cor-destaque-hover);
+  background-color: var(--eq01-cor-destaque-hover);
 }
 
 /*
-BLOCO: Menu de Abas (Navegação Principal)
-PARA QUE SERVE: Exibir as abas de navegação de forma responsiva no topo.
-O QUE FAZ: No celular organiza os botões em coluna ou linhas compactas; em telas maiores, em linha horizontal.
-RESPONSABILIDADE: Controle visual de qual seção está ativa (Unidade 3 e 5).
+   BLOCO: Menu de Abas (Navegação Principal)
+   PARA QUE SERVE: Exibir as abas de navegação de forma acessível e responsiva.
+   O QUE FAZ: Empilha os botões em coluna no celular (360px) mantendo todas as opções visíveis.
+   RESPONSABILIDADE: Corrigir a regra original que escondia o #menu abaixo de 1200px (Unidade 3 e 5).
 */
 .menu-principal {
-background-color: var(--eqX-cor-fundo-alt);
-border-bottom: 1px solid var(--eqX-cor-borda);
+  background-color: var(--eq01-cor-fundo-alt);
+  border-bottom: 1px solid var(--eq01-cor-borda);
 }
 
 .abas-lista {
-list-style: none;
-display: flex;
-flex-direction: column;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .aba {
-width: 100%;
-padding: var(--eqX-espaco-md);
-background: transparent;
-border: none;
-border-bottom: 1px solid var(--eqX-cor-borda);
-color: var(--eqX-cor-texto-secundario);
-font-size: 1rem;
-font-weight: 600;
-cursor: pointer;
-text-align: left;
-transition: all 0.2s ease;
+  width: 100%;
+  min-height: 44px;
+  padding: var(--eq01-espaco-sm) var(--eq01-espaco-md);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--eq01-cor-borda);
+  color: var(--eq01-cor-texto-secundario);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .aba:hover {
-background-color: #e5e7eb;
-color: var(--eqX-cor-primaria);
+  background-color: #e5e7eb;
+  color: var(--eq01-cor-primaria);
 }
 
 .aba.ativa {
-background-color: var(--eqX-cor-fundo);
-color: var(--eqX-cor-primaria);
-font-weight: 700;
-border-left: 4px solid var(--eqX-cor-primaria);
+  background-color: var(--eq01-cor-fundo);
+  color: var(--eq01-cor-primaria);
+  font-weight: 700;
+  border-left: 4px solid var(--eq01-cor-primaria);
 }
 
 /*
-BLOCO: Área de Conteúdo Central (Main)
-PARA QUE SERVE: Ajustar espaçamento e expansão das seções do documento.
-O QUE FAZ: Ocupa flex-grow: 1 para empurrar o rodapé para a base e adiciona respiro vertical.
-RESPONSABILIDADE: Layout estável da área de leitura (Unidade 3).
+   BLOCO: Área de Conteúdo Central (Main) e Controle de Visibilidade das Abas
+   PARA QUE SERVE: Controlar espaçamento central e alternar seções apenas por classes e [hidden].
+   O QUE FAZ: Ocupa o espaço restante via flex-grow: 1 e oculta seções inativas sem !important.
+   RESPONSABILIDADE: Separar controle de visibilidade do JS para o CSS (Unidade 3 e 8.2).
 */
 .conteudo-principal {
-flex-grow: 1;
-padding-top: var(--eqX-espaco-xl);
-padding-bottom: var(--eqX-espaco-xl);
+  flex-grow: 1;
+  padding-top: var(--eq01-espaco-lg);
+  padding-bottom: var(--eq01-espaco-xl);
 }
 
-[hidden],
-.secao-aba[hidden] {
-display: none !important;
+.secao-aba {
+  display: none;
 }
 
 .secao-aba.ativa {
-display: block;
+  display: block;
+}
+
+[hidden] {
+  display: none;
+}
+
+.cabecalho-secao {
+  margin-bottom: var(--eq01-espaco-lg);
 }
 
 /*
-
-BLOCO: Botões Reutilizáveis
-PARA QUE SERVE: Padronizar ações interativas (comprar, solicitar, limpar).
-O QUE FAZ: Cria estilos coerentes com padding acessível, raio de borda e cores com contraste testado.
-RESPONSABILIDADE: Fornecer feedback tátil e visual ao usuário (Unidade 3.1).
+   BLOCO: Botões Reutilizáveis
+   PARA QUE SERVE: Padronizar ações interativas com contraste e área de toque acessíveis.
+   O QUE FAZ: Define variantes primária, secundária e neutra com min-height de 44px.
+   RESPONSABILIDADE: Garantir contraste WCAG AA (>= 4.5:1) em todos os botões (Unidade 5).
 */
 .botao {
-display: inline-block;
-padding: var(--eqX-espaco-sm) var(--eqX-espaco-lg);
-font-size: 0.95rem;
-font-weight: 700;
-text-align: center;
-border-radius: var(--eqX-raio-borda);
-border: 1px solid transparent;
-cursor: pointer;
-transition: all 0.2s ease;
-min-height: 44px; /* Tamanho mínimo de toque recomendado pela WCAG para mobile */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--eq01-espaco-sm) var(--eq01-espaco-lg);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  border-radius: var(--eq01-raio-borda);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  min-height: 44px;
 }
 
 .botao-primario {
-background-color: var(--eqX-cor-destaque);
-color: var(--eqX-cor-destaque-texto);
+  background-color: var(--eq01-cor-destaque);
+  color: var(--eq01-cor-destaque-texto);
 }
 
 .botao-primario:hover {
-background-color: var(--eqX-cor-destaque-hover);
+  background-color: var(--eq01-cor-destaque-hover);
 }
 
 .botao-secundario {
-background-color: transparent;
-color: var(--eqX-cor-primaria);
-border-color: var(--eqX-cor-primaria);
+  background-color: var(--eq01-cor-fundo);
+  color: var(--eq01-cor-primaria);
+  border-color: var(--eq01-cor-primaria);
 }
 
 .botao-secundario:hover {
-background-color: var(--eqX-cor-primaria);
-color: #ffffff;
+  background-color: var(--eq01-cor-primaria);
+  color: #ffffff;
 }
 
 .botao-neutro {
-background-color: #e5e7eb;
-color: var(--eqX-cor-texto);
+  background-color: #e5e7eb;
+  color: var(--eq01-cor-texto);
+  border-color: var(--eq01-cor-borda);
 }
 
 .botao-neutro:hover {
-background-color: #d1d5db; 
+  background-color: #d1d5db;
+}
+
+/*
+   BLOCO: Banner Promocional e Hero da Seção Empresa
+   PARA QUE SERVE: Substituir o antigo <marquee> intermitente por destaque acessível e estático.
+   O QUE FAZ: Apresenta o selo promocional com animação suave opcional e a chamada principal.
+   RESPONSABILIDADE: Eliminar piscamento agressivo conforme WCAG e Steve Krug (Unidade 5.2 e 5.4).
+*/
+.banner-promocao {
+  background: linear-gradient(135deg, var(--eq01-cor-primaria) 0%, #063c66 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 214, 0, 0.45);
+  border-radius: var(--eq01-raio-borda);
+  padding: var(--eq01-espaco-lg);
+  margin-bottom: var(--eq01-espaco-xl);
+  box-shadow: 0 4px 12px rgba(10, 88, 150, 0.15);
+}
+
+.banner-promocao-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eq01-espaco-sm);
+}
+
+.banner-badge-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--eq01-espaco-sm);
+}
+
+.badge-promocao {
+  background-color: var(--eq01-cor-destaque);
+  color: var(--eq01-cor-destaque-texto);
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  display: inline-block;
+}
+
+.badge-subtitulo {
+  font-size: 0.9rem;
+  color: #e0f2fe;
+  font-weight: 600;
+}
+
+.banner-descricao {
+  font-size: 0.98rem;
+  color: #f8fafc;
+  line-height: 1.5;
+}
+
+.banner-vantagens {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--eq01-espaco-sm) var(--eq01-espaco-lg);
+  font-size: 0.875rem;
+  color: var(--eq01-cor-destaque);
+  font-weight: 700;
+}
+
+@keyframes pulsarSuave {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.88;
+  }
+}
+
+.piscar {
+  animation: pulsarSuave 3s infinite ease-in-out;
+}
+
+.subtitulo-secao {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--eq01-cor-primaria);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--eq01-espaco-xs);
+}
+
+.hero {
+  margin-bottom: var(--eq01-espaco-xl);
+}
+
+.texto-destaque {
+  font-size: 1.1rem;
+  color: var(--eq01-cor-texto-secundario);
+  margin-bottom: var(--eq01-espaco-lg);
+  max-width: 50rem;
+}
+
+.hero-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eq01-espaco-sm);
+  width: 100%;
+  min-width: 0;
+}
+
+.hero-acoes .botao {
+  width: 100%;
+}
+
+/*
+   BLOCO: Diagrama do Switch e Status das Portas
+   PARA QUE SERVE: Exibir o hardware com legenda textual acessível dos LEDs de status.
+   O QUE FAZ: Combina marcadores coloridos com texto descritivo para cada porta.
+   RESPONSABILIDADE: Garantir que a informação não dependa apenas da cor (Unidade 5.1).
+*/
+.painel-switch {
+  background-color: #111827;
+  color: #ffffff;
+  padding: var(--eq01-espaco-md);
+  border-radius: var(--eq01-raio-borda);
+  margin-bottom: var(--eq01-espaco-xl);
+}
+
+.status-portas {
+  margin-top: var(--eq01-espaco-sm);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--eq01-espaco-sm) var(--eq01-espaco-md);
+  font-size: 0.875rem;
+}
+
+.porta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--eq01-espaco-xs);
+}
+
+.indicador {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.indicador.verde {
+  background-color: #22c55e;
+}
+
+.indicador.vermelho {
+  background-color: #ef4444;
+}
+
+/*
+   BLOCO: Blocos Institucionais e Tabela de Horários
+   PARA QUE SERVE: Substituir as tabelas de diagramação por Grid responsivo e tabela semântica.
+   O QUE FAZ: Organiza seções institucionais com cards e estiliza a tabela real de horários.
+   RESPONSABILIDADE: Semântica HTML5 + CSS Grid mobile-first (Unidades 2.5 e 3.5).
+*/
+.blocos-institucionais {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eq01-espaco-xl);
+}
+
+.bloco-institucional p + p {
+  margin-top: var(--eq01-espaco-sm);
+}
+
+.grid-institucional {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--eq01-espaco-md);
+  margin-top: var(--eq01-espaco-md);
+}
+
+.card-info {
+  background-color: var(--eq01-cor-fundo-alt);
+  border: 1px solid var(--eq01-cor-borda);
+  border-radius: var(--eq01-raio-borda);
+  padding: var(--eq01-espaco-md);
+}
+
+.tabela-atendimento {
+  width: 100%;
+  max-width: 36rem;
+  border-collapse: collapse;
+  margin-top: var(--eq01-espaco-sm);
+  background-color: var(--eq01-cor-fundo);
+  border: 1px solid var(--eq01-cor-borda);
+}
+
+.tabela-atendimento caption {
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--eq01-cor-texto-secundario);
+  margin-bottom: var(--eq01-espaco-xs);
+}
+
+.tabela-atendimento th,
+.tabela-atendimento td {
+  padding: var(--eq01-espaco-sm) var(--eq01-espaco-md);
+  border: 1px solid var(--eq01-cor-borda);
+  text-align: left;
+}
+
+.tabela-atendimento thead th {
+  background-color: var(--eq01-cor-primaria);
+  color: #ffffff;
+}
+
+.tabela-atendimento tbody th {
+  font-weight: 600;
+  background-color: var(--eq01-cor-fundo-alt);
+}
+
+/*
+   BLOCO: Controles do Catálogo (Busca, Ordenação por Preço e Filtros)
+   PARA QUE SERVE: Oferecer controles acessíveis para buscar, filtrar por linha e ordenar preços.
+   O QUE FAZ: Organiza campo de busca, seletor de ordenação e botões de filtro com foco nítido.
+   RESPONSABILIDADE: Suportar o recurso extra de ordenação de preços em mobile e desktop.
+*/
+.controles-catalogo {
+  background-color: var(--eq01-cor-fundo-alt);
+  border: 1px solid var(--eq01-cor-borda);
+  border-radius: var(--eq01-raio-borda);
+  padding: var(--eq01-espaco-md);
+  margin-bottom: var(--eq01-espaco-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--eq01-espaco-md);
+}
+
+.controles-topo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--eq01-espaco-md);
+}
+
+.campo-busca-wrapper,
+.campo-ordenacao-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eq01-espaco-xs);
+  min-width: 0;
+}
+
+.campo-busca-wrapper label,
+.campo-ordenacao-wrapper label,
+.campo-grupo label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--eq01-cor-texto);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+select,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--eq01-espaco-sm) var(--eq01-espaco-md);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--eq01-cor-texto);
+  background-color: var(--eq01-cor-fundo);
+  border: 1px solid var(--eq01-cor-borda);
+  border-radius: var(--eq01-raio-borda);
+}
+
+textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.filtros-linhas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--eq01-espaco-sm);
+}
+
+.filtro-btn {
+  min-height: 44px;
+  padding: var(--eq01-espaco-xs) var(--eq01-espaco-md);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--eq01-cor-texto);
+  background-color: var(--eq01-cor-fundo);
+  border: 1px solid var(--eq01-cor-borda);
+  border-radius: var(--eq01-raio-borda);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filtro-btn:hover {
+  border-color: var(--eq01-cor-primaria);
+  color: var(--eq01-cor-primaria);
+}
+
+.filtro-btn.ativo {
+  background-color: var(--eq01-cor-primaria);
+  color: #ffffff;
+  border-color: var(--eq01-cor-primaria);
+}
+
+.resultado-busca {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--eq01-cor-primaria);
+  margin-bottom: var(--eq01-espaco-md);
+  min-height: 1.5rem;
+}
+
+/*
+   BLOCO: Grade de Produtos (CSS Grid Responsivo)
+   PARA QUE SERVE: Substituir cards com float e medidas fixas por CSS Grid fluido.
+   O QUE FAZ: Alinha os cartões em altura uniforme com botão fixado na base.
+   RESPONSABILIDADE: Garantir leitura clara e sem sobreposições em qualquer tela (Unidade 3.5).
+*/
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--eq01-espaco-md);
+}
+
+.catalogo-vazio {
+  grid-column: 1 / -1;
+  background-color: var(--eq01-cor-fundo-alt);
+  border: 1px dashed var(--eq01-cor-borda);
+  border-radius: var(--eq01-raio-borda);
+  padding: var(--eq01-espaco-lg);
+  color: var(--eq01-cor-texto);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--eq01-cor-fundo);
+  border: 1px solid var(--eq01-cor-borda);
+  border-radius: var(--eq01-raio-borda);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+.card-img-wrapper {
+  background-color: var(--eq01-cor-fundo-alt);
+  padding: var(--eq01-espaco-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 11rem;
+  border-bottom: 1px solid var(--eq01-cor-borda);
+}
+
+.card-img {
+  max-height: 10rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.card-corpo {
+  padding: var(--eq01-espaco-md);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: var(--eq01-espaco-sm);
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--eq01-espaco-xs);
+}
+
+.card-sku {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--eq01-cor-texto-secundario);
+  letter-spacing: 0.04em;
+}
+
+.card-badge-linha {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--eq01-cor-fundo-alt);
+  color: var(--eq01-cor-primaria);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--eq01-cor-borda);
+}
+
+.card-titulo {
+  font-size: 1.05rem;
+  color: var(--eq01-cor-texto);
+  margin-bottom: 0;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: var(--eq01-cor-texto-secundario);
+  flex-grow: 1;
+}
+
+.card-preco {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--eq01-cor-primaria);
+  margin-top: var(--eq01-espaco-xs);
+}
+
+.btn-adicionar {
+  width: 100%;
+  margin-top: var(--eq01-espaco-xs);
+}
+
+/*
+   BLOCO: Painel de Resumo do Pedido
+   PARA QUE SERVE: Exibir os itens adicionados, total formatado e ações de finalizar/limpar.
+   O QUE FAZ: Destaca a área do carrinho abaixo do catálogo com feedback em tempo real.
+   RESPONSABILIDADE: Evitar alert() bloqueante oferecendo retorno claro na página (Unidade 5.4).
+*/
+.painel-pedido {
+  margin-top: var(--eq01-espaco-xl);
+  background-color: var(--eq01-cor-fundo-alt);
+  border: 2px solid var(--eq01-cor-primaria);
+  border-radius: var(--eq01-raio-borda);
+  padding: var(--eq01-espaco-lg);
+}
+
+.lista-pedido {
+  list-style: none;
+  margin: var(--eq01-espaco-md) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--eq01-espaco-sm);
+}
+
+.pedido-vazio {
+  color: var(--eq01-cor-texto-secundario);
+  font-style: italic;
+}
+
+.item-pedido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--eq01-espaco-sm);
+  background-color: var(--eq01-cor-fundo);
+  border: 1px solid var(--eq01-cor-borda);
+  border-radius: var(--eq01-raio-borda);
+  padding: var(--eq01-espaco-sm) var(--eq01-espaco-md);
+}
+
+.item-pedido-info {
+  font-size: 0.95rem;
+  color: var(--eq01-cor-texto);
+}
+
+.btn-remover-item {
+  min-height: 36px;
+  padding: 0.25rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--eq01-cor-erro);
+  background-color: var(--eq01-cor-fundo);
+  border: 1px solid var(--eq01-cor-erro);
+  border-radius: var(--eq01-raio-borda);
+  cursor: pointer;
+}
+
+.btn-remover-item:hover {
+  background-color: var(--eq01-cor-erro);
+  color: #ffffff;
+}
+
+.pedido-total-linha {
+  font-size: 1.2rem;
+  margin-bottom: var(--eq01-espaco-sm);
+}
+
+.pedido-total-linha strong {
+  color: var(--eq01-cor-sucesso);
+}
+
+.pedido-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--eq01-espaco-sm);
+  margin-top: var(--eq01-espaco-md);
+}
+
+.feedback-status {
+  min-height: 1.4rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-top: var(--eq01-espaco-xs);
+}
+
+.feedback-sucesso {
+  color: var(--eq01-cor-sucesso);
+}
+
+.feedback-info {
+  color: var(--eq01-cor-primaria);
+}
+
+/*
+   BLOCO: Seção Contato (Formulário e Canais Diretos)
+   PARA QUE SERVE: Substituir a tabela da seção de contato por CSS Grid acessível.
+   O QUE FAZ: Alinha o formulário validado e os cartões de contato com botão de cópia.
+   RESPONSABILIDADE: Validar dados com mensagens específicas junto aos campos (Unidade 2.3 e 5.4).
+*/
+.contato-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--eq01-espaco-xl);
+}
+
+.form-contato {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eq01-espaco-md);
+}
+
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eq01-espaco-xs);
+}
+
+.obrigatorio {
+  color: var(--eq01-cor-erro);
+}
+
+.campo-invalido {
+  border-color: var(--eq01-cor-erro);
+  border-width: 2px;
+}
+
+.erro-campo {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--eq01-cor-erro);
+  min-height: 1.2rem;
+}
+
+.resultado-contato {
+  margin-top: var(--eq01-espaco-lg);
+  padding: var(--eq01-espaco-md);
+  background-color: #ecfdf5;
+  border: 1px solid var(--eq01-cor-sucesso);
+  border-radius: var(--eq01-raio-borda);
+  color: var(--eq01-cor-texto);
+}
+
+.lista-resumo-contato {
+  margin-top: var(--eq01-espaco-sm);
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--eq01-espaco-xs);
+}
+
+.canais-contato {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eq01-espaco-md);
+}
+
+.card-canal {
+  background-color: var(--eq01-cor-fundo-alt);
+  border: 1px solid var(--eq01-cor-borda);
+  border-radius: var(--eq01-raio-borda);
+  padding: var(--eq01-espaco-md);
+}
+
+.canal-rotulo {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--eq01-cor-primaria);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--eq01-espaco-xs);
+}
+
+.canal-linha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--eq01-espaco-sm);
+}
+
+.canal-valor {
+  font-weight: 700;
+  color: var(--eq01-cor-texto);
+  word-break: break-word;
+}
+
+.btn-copiar {
+  min-height: 40px;
+  padding: 0.35rem 0.9rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  background-color: var(--eq01-cor-primaria);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--eq01-raio-borda);
+  cursor: pointer;
+}
+
+.btn-copiar:hover {
+  background-color: var(--eq01-cor-primaria-hover);
+}
+
+.canal-observacao {
+  font-size: 0.92rem;
+}
+
+/*
+   BLOCO: Acordeão de Perguntas Frequentes (FAQ)
+   PARA QUE SERVE: Tornar as perguntas frequentes operáveis por mouse, toque e teclado.
+   O QUE FAZ: Estiliza os botões nativos e exibe indicador visual de estado aberto/fechado.
+   RESPONSABILIDADE: Corrigir os antigos <h6 onmouseover> inacessíveis (Etapa 3 e 6).
+*/
+.faq-lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eq01-espaco-sm);
+}
+
+.faq-item {
+  border: 1px solid var(--eq01-cor-borda);
+  border-radius: var(--eq01-raio-borda);
+  background-color: var(--eq01-cor-fundo);
+  overflow: hidden;
+}
+
+.faq-item h3 {
+  margin-bottom: 0;
+}
+
+.faq-pergunta {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--eq01-espaco-md);
+  background-color: var(--eq01-cor-fundo-alt);
+  border: none;
+  color: var(--eq01-cor-texto);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--eq01-espaco-md);
+}
+
+.faq-pergunta::after {
+  content: "+";
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--eq01-cor-primaria);
+  flex-shrink: 0;
+}
+
+.faq-pergunta[aria-expanded="true"] {
+  background-color: var(--eq01-cor-primaria);
+  color: #ffffff;
+}
+
+.faq-pergunta[aria-expanded="true"]::after {
+  content: "−";
+  color: var(--eq01-cor-destaque);
+}
+
+.resposta {
+  padding: var(--eq01-espaco-md);
+  color: var(--eq01-cor-texto);
+  background-color: var(--eq01-cor-fundo);
+  border-top: 1px solid var(--eq01-cor-borda);
+}
+
+/*
+   BLOCO: Rodapé (Footer)
+   PARA QUE SERVE: Apresentar informações institucionais e autoria com alto contraste.
+   O QUE FAZ: Substitui <div class="rodape" style="...color:#ddd"> e <center>.
+   RESPONSABILIDADE: Contraste acessível superior a 12:1 (Unidade 5.2).
+*/
+.rodape {
+  background-color: #111827;
+  color: #e5e7eb;
+  padding: var(--eq01-espaco-lg) 0;
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: auto;
+}
+
+/*
+   BLOCO: Breakpoint Principal da Ficha da Equipe (768px — Mobile-First)
+   PARA QUE SERVE: Expandir o layout de coluna única para múltiplas colunas em tablets e desktops.
+   O QUE FAZ: Ajusta topo, menu horizontal, barra de busca+ordenação, grids e contato.
+   RESPONSABILIDADE: Cumprir o requisito Breakpoint 768px da Ficha da Equipe (Unidade 3.7).
+*/
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.15rem;
+  }
+
+  .topo-conteudo {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .btn-pedido-topo {
+    width: auto;
+    min-width: 11rem;
+  }
+
+  .abas-lista {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--eq01-espaco-xs);
+  }
+
+  .aba {
+    width: auto;
+    border-bottom: 3px solid transparent;
+    padding: var(--eq01-espaco-md) var(--eq01-espaco-lg);
+    text-align: center;
+  }
+
+  .aba.ativa {
+    border-left: none;
+    border-bottom-color: var(--eq01-cor-primaria);
+  }
+
+  .hero-acoes {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .hero-acoes .botao {
+    width: auto;
+  }
+
+  .grid-institucional {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid-duas-colunas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .controles-topo {
+    grid-template-columns: 2fr 1fr;
+    align-items: end;
+  }
+
+  .catalogo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contato-grid {
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+  }
+}
+
+/*
+   BLOCO: Breakpoint Desktop Expandido (1024px)
+   PARA QUE SERVE: Aproveitar melhor telas largas exibindo 3 cartões de produto por linha.
+   O QUE FAZ: Amplia a grade do catálogo para 3 colunas proporcionais.
+   RESPONSABILIDADE: Otimização visual para monitores (Unidade 3.5).
+*/
+@media (min-width: 1024px) {
+  .catalogo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/*
+   BLOCO: Preferência de Movimento Reduzido (Acessibilidade WCAG)
+   PARA QUE SERVE: Proteger usuários com sensibilidade vestibular ou déficit de atenção.
+   O QUE FAZ: Desativa animações e transições quando o sistema operacional solicitar redução.
+   RESPONSABILIDADE: Cumprir a Etapa 6 Passo 5 e a Unidade 5.2.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+
+  .piscar {
+    animation: none;
+  }
 }
