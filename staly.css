@@ -519,3 +519,336 @@ background-color: #22c55e;
 .indicador.vermelho {
 background-color: #ef4444;
 }
+/*
+BLOCO: Grade Institucional (Quem Somos, O Que Vendemos, etc.)
+PARA QUE SERVE: Apresentar a estrutura corporativa em blocos organizados.
+O QUE FAZ: Usa CSS Grid e cartões com bordas sutis e fundo alternativo.
+RESPONSABILIDADE: Leitura fluida e layout adaptável (Unidade 3.4 e 3.5).
+*/
+.grade-institucional {
+display: grid;
+gap: var(--eqX-espaco-lg);
+}
+
+.bloco-institucional {
+display: grid;
+grid-template-columns: 1fr;
+gap: var(--eqX-espaco-sm);
+padding: var(--eqX-espaco-md);
+background-color: var(--eqX-cor-fundo-alt);
+border-radius: var(--eqX-raio-borda);
+border: 1px solid var(--eqX-cor-borda);
+min-width: 0;
+box-sizing: border-box;
+}
+
+.rotulo-bloco {
+font-size: 1.1rem;
+color: var(--eqX-cor-primaria);
+font-weight: 800;
+letter-spacing: 0.05em;
+overflow-wrap: anywhere;
+word-break: break-word;
+}
+
+.grade-categorias,
+.lista-trabalho {
+display: grid;
+gap: var(--eqX-espaco-md);
+grid-template-columns: 1fr;
+min-width: 0;
+box-sizing: border-box;
+}
+
+.card-categoria,
+.item-trabalho {
+background-color: var(--eqX-cor-fundo);
+padding: var(--eqX-espaco-md);
+border-radius: var(--eqX-raio-borda);
+border: 1px solid var(--eqX-cor-borda);
+min-width: 0;
+box-sizing: border-box;
+overflow-wrap: anywhere;
+word-break: break-word;
+}
+
+/*
+BLOCO: Tabela de Horários
+PARA QUE SERVE: Exibição estruturada dos horários de atendimento da loja.
+O QUE FAZ: Aplica bordas e cabeçalho claro para leitura de dados tabulares.
+RESPONSABILIDADE: Dados tabulares legítimos com legenda (caption) e escopo de colunas (Unidade 2.5 e 3.6).
+*/
+.tabela-horarios {
+width: 100%;
+border-collapse: collapse;
+background-color: var(--eqX-cor-fundo);
+border-radius: var(--eqX-raio-borda);
+overflow: hidden;
+border: 1px solid var(--eqX-cor-borda);
+}
+
+.tabela-horarios caption {
+font-size: 0.9rem;
+color: var(--eqX-cor-texto-secundario);
+margin-bottom: var(--eqX-espaco-xs);
+text-align: left;
+font-weight: 600;
+}
+
+.tabela-horarios th,
+.tabela-horarios td {
+padding: var(--eqX-espaco-sm) var(--eqX-espaco-md);
+border: 1px solid var(--eqX-cor-borda);
+text-align: left;
+}
+
+.tabela-horarios th {
+background-color: #e5e7eb;
+font-weight: 700;
+}
+
+/*
+BLOCO: Seção 2 - Produtos e Catálogo
+PARA QUE SERVE: Controlar o formulário de busca, botões de filtro e lista de produtos.
+O QUE FAZ: Oferece layout flexível para os filtros e grade adaptável para os cards de produtos.
+RESPONSABILIDADE: Interface moderna do catálogo (Unidade 3).
+*/
+.controles-catalogo {
+margin-bottom: var(--eqX-espaco-lg);
+display: flex;
+flex-direction: column;
+gap: var(--eqX-espaco-md);
+}
+
+.campo-busca label {
+display: block;
+font-weight: 600;
+margin-bottom: var(--eqX-espaco-xs);
+}
+
+.campo-busca input[type="search"] {
+width: 100%;
+padding: var(--eqX-espaco-sm) var(--eqX-espaco-md);
+border: 1px solid var(--eqX-cor-borda);
+border-radius: var(--eqX-raio-borda);
+font-size: 1rem;
+}
+
+.linha-controles-secundarios {
+display: flex;
+flex-direction: column;
+align-items: stretch;
+gap: var(--eqX-espaco-md);
+width: 100%;
+}
+
+.filtros-linha {
+display: flex;
+flex-wrap: wrap;
+gap: var(--eqX-espaco-xs);
+width: 100%;
+}
+
+.btn-filtro {
+flex: 1 1 calc(50% - var(--eqX-espaco-xs));
+background-color: var(--eqX-cor-fundo-alt);
+border: 1px solid var(--eqX-cor-borda);
+padding: var(--eqX-espaco-xs) var(--eqX-espaco-sm);
+border-radius: var(--eqX-raio-borda);
+font-size: 0.9rem;
+font-weight: 600;
+cursor: pointer;
+color: var(--eqX-cor-texto);
+transition: all 0.2s ease;
+text-align: center;
+min-height: 42px;
+}
+
+.btn-filtro:hover {
+background-color: #e5e7eb;
+}
+
+.btn-filtro.ativo {
+background-color: var(--eqX-cor-primaria);
+color: #ffffff;
+border-color: var(--eqX-cor-primaria);
+}
+
+/*
+BLOCO: Seletor de Ordenação por Preço (Recurso Extra)
+PARA QUE SERVE: Permitir ao usuário escolher entre ordem crescente ou decrescente de valor.
+O QUE FAZ: Estiliza o dropdown com contraste acessível, borda e tamanho de clique confortável.
+RESPONSABILIDADE: Acessibilidade e consistência visual com os demais controles (Unidade 3 e 5).
+*/
+.campo-ordenacao {
+display: flex;
+flex-direction: column;
+gap: var(--eqX-espaco-xs);
+width: 100%;
+}
+
+.campo-ordenacao label {
+font-size: 0.9rem;
+font-weight: 600;
+color: var(--eqX-cor-texto);
+}
+
+.select-ordenacao {
+width: 100%;
+padding: var(--eqX-espaco-sm);
+border: 1px solid var(--eqX-cor-borda);
+border-radius: var(--eqX-raio-borda);
+background-color: var(--eqX-cor-fundo);
+color: var(--eqX-cor-texto);
+font-family: inherit;
+font-size: 0.95rem;
+font-weight: 600;
+cursor: pointer;
+min-height: 44px;
+}
+
+.status-busca {
+font-weight: 600;
+color: var(--eqX-cor-primaria);
+margin-bottom: var(--eqX-espaco-md);
+}
+
+.feedback-flutuante {
+font-size: 0.95rem;
+font-weight: 600;
+color: var(--eqX-cor-sucesso);
+min-height: 1.5rem;
+margin-bottom: var(--eqX-espaco-sm);
+}
+
+/* Agrupamento por Linha no Catálogo (Etapa 3 do Roteiro) */
+.secao-grupo-catalogo {
+margin-bottom: var(--eqX-espaco-xl);
+}
+
+.titulo-linha-catalogo {
+font-size: 1.25rem;
+color: var(--eqX-cor-primaria);
+border-bottom: 2px solid var(--eqX-cor-borda);
+padding-bottom: var(--eqX-espaco-xs);
+margin-bottom: var(--eqX-espaco-md);
+}
+
+.grade-catalogo {
+display: grid;
+grid-template-columns: 1fr;
+gap: var(--eqX-espaco-md);
+width: 100%;
+min-width: 0;
+box-sizing: border-box;
+}
+
+/*
+BLOCO: Card de Produto Individual
+PARA QUE SERVE: Apresentar a foto, sku, nome, descrição, preço e botão de compra do produto.
+O QUE FAZ: Cartão estruturado com flexbox vertical, garantindo que o preço e o botão fiquem na base.
+RESPONSABILIDADE: Padronização e alinhamento visual dos produtos (Unidade 3).
+*/
+.card-produto {
+background-color: var(--eqX-cor-fundo);
+border: 1px solid var(--eqX-cor-borda);
+border-radius: var(--eqX-raio-borda);
+padding: var(--eqX-espaco-md);
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card-produto-img {
+margin: 0 auto var(--eqX-espaco-sm) auto;
+border-radius: var(--eqX-raio-borda);
+object-fit: contain;
+}
+
+.card-linha-badge {
+display: inline-block;
+font-size: 0.75rem;
+font-weight: 700;
+text-transform: uppercase;
+color: var(--eqX-cor-primaria);
+background-color: var(--eqX-cor-fundo-alt);
+border: 1px solid var(--eqX-cor-borda);
+border-radius: var(--eqX-raio-borda);
+padding: 2px 6px;
+margin-bottom: var(--eqX-espaco-xs);
+width: fit-content;
+}
+
+.card-sku {
+display: block;
+font-size: 0.8rem;
+color: var(--eqX-cor-texto-secundario);
+text-transform: uppercase;
+margin-bottom: var(--eqX-espaco-xs);
+}
+
+.card-titulo {
+font-size: 1.1rem;
+line-height: 1.3;
+margin-bottom: var(--eqX-espaco-xs);
+}
+
+.card-desc {
+font-size: 0.9rem;
+color: var(--eqX-cor-texto-secundario);
+margin-bottom: var(--eqX-espaco-md);
+}
+
+.card-rodape {
+margin-top: auto;
+display: flex;
+flex-direction: column;
+gap: var(--eqX-espaco-sm);
+}
+
+.card-preco {
+font-size: 1.35rem;
+font-weight: 800;
+color: var(--eqX-cor-primaria);
+}
+
+/*
+BLOCO: Barra de Resumo e Atalho do Pedido no Catálogo
+PARA QUE SERVE: Exibir no catálogo o status atual do pedido com botão para expandir a gaveta.
+O QUE FAZ: Barra horizontal em destaque com ícone, quantidade de itens, total e botão de expansão.
+RESPONSABILIDADE: Acesso rápido ao pedido na navegação de compras (Unidade 3).
+*/
+.barra-resumo-pedido {
+display: flex;
+flex-direction: column;
+align-items: stretch;
+gap: var(--eqX-espaco-md);
+background-color: var(--eqX-cor-fundo-alt);
+border: 1px solid var(--eqX-cor-borda);
+border-radius: var(--eqX-raio-borda);
+padding: var(--eqX-espaco-md);
+margin-top: var(--eqX-espaco-xl);
+text-align: center;
+width: 100%;
+min-width: 0;
+box-sizing: border-box;
+}
+
+.resumo-pedido-info {
+display: flex;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+gap: var(--eqX-espaco-sm);
+font-size: 0.95rem;
+color: var(--eqX-cor-texto);
+}
+
+.barra-resumo-pedido .btn-expandir-pedido {
+width: 100%;
+}
+
+.icone-carrinho {
+font-size: 1.4rem;
+}
