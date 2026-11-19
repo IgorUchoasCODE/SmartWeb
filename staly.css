@@ -852,3 +852,191 @@ width: 100%;
 .icone-carrinho {
 font-size: 1.4rem;
 }
+/*
+BLOCO: Painel Expansível de Pedido (Drawer Lateral Deslizante)
+PARA QUE SERVE: Permitir que o cliente consulte, altere ou finalize seu pedido a partir de qualquer página.
+O QUE FAZ: Painel retrátil/expansível com animação de slide horizontal e backdrop escurecido.
+RESPONSABILIDADE: Usabilidade moderna, sem poluir a rolagem da página e com controle aria-expanded (Unidades 3 e 5).
+*/
+.backdrop-pedido {
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+background-color: rgba(0, 0, 0, 0.55);
+backdrop-filter: blur(2px);
+z-index: 9998;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.3s ease;
+}
+
+.backdrop-pedido.ativo {
+opacity: 1;
+pointer-events: auto;
+}
+
+.painel-pedido-drawer {
+position: fixed;
+top: 0;
+right: 0;
+left: 0;
+width: 100%;
+max-width: 100%;
+height: 100%;
+background-color: var(--eqX-cor-fundo);
+box-shadow: -4px 0 24px rgba(0, 0, 0, 0.25);
+z-index: 9999;
+display: flex;
+flex-direction: column;
+transform: translateX(100%);
+visibility: hidden;
+pointer-events: none;
+transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+overflow-y: auto;
+box-sizing: border-box;
+}
+
+.painel-pedido-drawer.aberto {
+transform: translateX(0);
+visibility: visible;
+pointer-events: auto;
+}
+
+.painel-pedido-drawer[hidden] {
+display: none !important;
+}
+
+.topo-pedido-drawer {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: var(--eqX-espaco-md) var(--eqX-espaco-md);
+background-color: var(--eqX-cor-primaria);
+color: #ffffff;
+width: 100%;
+min-width: 0;
+box-sizing: border-box;
+}
+
+.titulo-gaveta-container {
+min-width: 0;
+}
+
+.titulo-gaveta-container h2 {
+font-size: 1.25rem;
+color: #ffffff;
+margin: 0;
+overflow-wrap: anywhere;
+word-break: break-word;
+}
+
+.subtitulo-gaveta {
+font-size: 0.8rem;
+color: #e0f2fe;
+}
+
+.btn-fechar-drawer {
+background: transparent;
+border: none;
+color: #ffffff;
+font-size: 1.5rem;
+font-weight: 700;
+cursor: pointer;
+padding: var(--eqX-espaco-xs) var(--eqX-espaco-sm);
+border-radius: var(--eqX-raio-borda);
+line-height: 1;
+flex-shrink: 0;
+}
+
+.btn-fechar-drawer:hover {
+background-color: rgba(255, 255, 255, 0.2);
+}
+
+.corpo-pedido-drawer {
+padding: var(--eqX-espaco-md);
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+width: 100%;
+min-width: 0;
+box-sizing: border-box;
+}
+
+/*
+BLOCO: Contêiner Rolável da Tabela de Itens (Tabela do Pedido)
+PARA QUE SERVE: Permitir rolagem horizontal controlada caso os nomes dos itens ultrapassem a largura do celular.
+O QUE FAZ: Aplica overflow-x: auto sem quebrar o layout lateral do site.
+RESPONSABILIDADE: Adaptabilidade mobile e prevenção de corte de dados tabulares (Unidades 3.6 e 3.7).
+*/
+.lista-pedido {
+width: 100%;
+min-width: 0;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+margin-bottom: var(--eqX-espaco-md);
+}
+
+.rodape-pedido-drawer {
+margin-top: auto;
+border-top: 1px solid var(--eqX-cor-borda);
+padding-top: var(--eqX-espaco-md);
+width: 100%;
+min-width: 0;
+box-sizing: border-box;
+}
+
+.pedido-vazio {
+color: var(--eqX-cor-texto-secundario);
+font-style: italic;
+padding: var(--eqX-espaco-sm) 0;
+overflow-wrap: anywhere;
+word-break: break-word;
+}
+
+.tabela-pedido {
+width: 100%;
+min-width: 100%;
+table-layout: auto;
+border-collapse: collapse;
+margin-bottom: var(--eqX-espaco-sm);
+font-size: 0.85rem;
+}
+
+.tabela-pedido th,
+.tabela-pedido td {
+padding: var(--eqX-espaco-xs);
+border-bottom: 1px solid var(--eqX-cor-borda);
+text-align: left;
+overflow-wrap: anywhere;
+word-break: break-word;
+}
+
+.btn-remover-item {
+background: transparent;
+color: var(--eqX-cor-erro);
+border: none;
+font-size: 0.85rem;
+font-weight: 700;
+cursor: pointer;
+text-decoration: underline;
+padding: 2px 4px;
+white-space: nowrap;
+}
+
+.linha-total {
+font-size: 1.25rem;
+margin-bottom: var(--eqX-espaco-md);
+}
+
+.acoes-pedido {
+display: flex;
+flex-direction: column;
+gap: var(--eqX-espaco-sm);
+width: 100%;
+}
+
+.acoes-pedido .botao {
+width: 100%;
+}
